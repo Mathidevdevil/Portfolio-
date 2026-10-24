@@ -264,5 +264,5 @@ export const portfolioContent = {
       description: "supervised learning, data preprocessing with Python, Pandas, scikit-learn, model evaluation on real-world datasets"
     }
   ],
-  footer: "© 2024 Mathiyarasu Arumugam. All rights reserved."
+  footer: "© 2026 Mathiyarasu Arumugam. All rights reserved."
 };
