@@ -234,19 +234,19 @@ export const portfolioContent = {
     certifications: "Certifications."
   },
   about: {
-    description: "Electronics and Communication Engineering Graduate (B.E. & Diploma with Distinction) combining rigorous hardware fundamentals with software engineering. Experienced in RTL design, static timing analysis (STA), digital/analog electronics, and benchtop hardware testing, alongside developing C++ event-driven circuit simulators and Python-based test automation. Adept at building high-performance algorithmic tools and bridging the gap between semiconductor architectures and software execution to solve complex VLSI and EDA challenges.",
+    description: "Electronics and Communication Engineering Graduate (B.E. & Diploma with Distinction) with strong software development skills and a solid academic grounding in electronics. Proficient in C++, Python, and full-stack development, with practical experience building circuit simulation programs and test automation scripts. Possesses foundational knowledge of digital electronics, core VLSI concepts, and benchtop hardware testing, with a keen interest in applying software engineering to semiconductor workflows and electronic design tools.",
     highlights: [
       {
-        label: "VLSI & Hardware",
-        details: "RTL design, static timing analysis (STA), analog/digital electronics, and benchtop hardware testing."
-      },
-      {
         label: "Software",
-        details: "C++ event-driven simulation, Python test automation, algorithmic tooling, and software execution."
+        details: "C++, Python, full-stack development, circuit simulation, and test automation."
       },
       {
-        label: "Focus",
-        details: "Bridging silicon and code to solve complex VLSI and EDA challenges."
+        label: "Electronics",
+        details: "Academic foundation in digital electronics, core VLSI concepts, and benchtop hardware testing."
+      },
+      {
+        label: "Direction",
+        details: "Applying software engineering to semiconductor workflows and electronic design tools."
       }
     ],
     education: [
