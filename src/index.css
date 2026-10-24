@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -83,6 +85,90 @@
   --portfolio-cursor-wash: rgba(245, 245, 247, 0.035);
   --education-photo-overlay: rgba(22, 22, 23, 0.82);
   --portfolio-shadow: 0 8px 30px rgba(0, 0, 0, 0.24);
+}
+
+.portfolio-app.is-loading {
+  visibility: hidden;
+}
+
+.loading-intro {
+  position: fixed;
+  z-index: 1000;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  background: #ffffff;
+  color: #000000;
+  transition: transform 900ms cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+.loading-intro.is-exiting {
+  transform: translateY(-100%);
+}
+
+.loading-intro-stage {
+  position: relative;
+  width: min(100% - 32px, 680px);
+  min-height: 180px;
+  display: grid;
+  place-items: center;
+}
+
+.loading-intro-scribble {
+  position: absolute;
+  width: 160px;
+  height: 160px;
+  overflow: visible;
+  animation: loading-intro-scribble-out 250ms ease 2.1s forwards;
+}
+
+.loading-intro-scribble path {
+  fill: none;
+  stroke: #000000;
+  stroke-width: 5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: loading-intro-scribble-draw 1.6s cubic-bezier(0.65, 0, 0.35, 1) 300ms forwards;
+}
+
+.loading-intro-logo {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  color: #000000;
+  font: 600 clamp(44px, 9vw, 68px)/1 "Cormorant Garamond", Georgia, serif;
+  letter-spacing: 0.08em;
+  white-space: nowrap;
+}
+
+.loading-intro-logo-line {
+  display: block;
+  overflow: hidden;
+  padding-bottom: 0.08em;
+}
+
+.loading-intro-logo-line i {
+  display: block;
+  font-style: normal;
+  transform: translateY(110%);
+  animation: loading-intro-logo-rise 600ms cubic-bezier(0.16, 1, 0.3, 1) 2.2s forwards;
+}
+
+@keyframes loading-intro-scribble-draw {
+  to { stroke-dashoffset: 0; }
+}
+
+@keyframes loading-intro-scribble-out {
+  to { opacity: 0; transform: scale(0.6); }
+}
+
+@keyframes loading-intro-logo-rise {
+  to { transform: translateY(0); }
 }
 
 @layer base {
@@ -411,20 +497,13 @@
 .hero-title {
   max-width: 720px;
   margin: 0;
-  background: linear-gradient(
-    118deg,
-    var(--portfolio-heading-start) 3%,
-    var(--portfolio-heading-mid) 49%,
-    var(--portfolio-heading-end) 100%
-  );
-  background-clip: text;
-  color: transparent;
+  color: var(--portfolio-heading-start);
+  font-family: "Canicule Display", "Segoe UI", sans-serif;
   font-size: clamp(58px, 8.6vw, 104px);
-  font-weight: 690;
-  letter-spacing: -0.09em;
-  line-height: 0.94;
+  font-weight: 500;
+  letter-spacing: -0.06em;
+  line-height: 0.9;
   text-wrap: balance;
-  -webkit-background-clip: text;
 }
 
 .hero-tagline {

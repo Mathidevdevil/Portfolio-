@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
@@ -8,20 +8,57 @@ import Experience from './components/Experience';
 import Certifications from './components/Certifications';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
+import LoadingIntro from './components/LoadingIntro';
+import { portfolioData } from './data/portfolio.js';
 
 function App() {
+  const [isLoading, setIsLoading] = useState(true);
+  const [isExiting, setIsExiting] = useState(false);
+
+  useEffect(() => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      setIsLoading(false);
+      return undefined;
+    }
+
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    const exitTimer = window.setTimeout(() => setIsExiting(true), 3200);
+    const finishTimer = window.setTimeout(() => {
+      document.body.style.overflow = previousOverflow;
+      setIsLoading(false);
+    }, 4100);
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      window.clearTimeout(exitTimer);
+      window.clearTimeout(finishTimer);
+    };
+  }, []);
+
   return (
-    <div className="portfolio-app">
-      <Navbar />
-      <Hero />
-      <About />
-      <Experience />
-      <Projects />
-      <Skills />
-      <Certifications />
-      <Contact />
-      <Footer />
-    </div>
+    <>
+      {isLoading && (
+        <LoadingIntro
+          name={portfolioData.name}
+          isExiting={isExiting}
+        />
+      )}
+      <div
+        className={`portfolio-app${isLoading ? ' is-loading' : ''}`}
+        aria-hidden={isLoading}
+      >
+        <Navbar />
+        <Hero />
+        <About />
+        <Experience />
+        <Projects />
+        <Skills />
+        <Certifications />
+        <Contact />
+        <Footer />
+      </div>
+    </>
   );
 }
 
