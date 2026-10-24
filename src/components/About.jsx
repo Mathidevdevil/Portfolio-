@@ -31,6 +31,13 @@ export default function About() {
           <p className="section-eyebrow">About</p>
           <h2 id="about-title" className="section-title">{portfolioContent.sectionTitles.about}</h2>
           <p className="about-description">{portfolioContent.about.description}</p>
+          <ul className="about-highlights" aria-label="Core highlights">
+            {portfolioContent.about.highlights.map(({ label, details }) => (
+              <li key={label}>
+                <strong>{label}:</strong> {details}
+              </li>
+            ))}
+          </ul>
         </motion.div>
 
         <div className="about-education-grid" aria-label="Education">

@@ -234,7 +234,21 @@ export const portfolioContent = {
     certifications: "Certifications."
   },
   about: {
-    description: "I am a 2025 ECE Graduate turned Full Stack Developer. Blending the precision of electronics engineering with the creativity of software development. Trained in Bangalore, I specialize in building scalable, secure, and high-performance applications using the Java ecosystem.",
+    description: "Electronics and Communication Engineering Graduate (B.E. & Diploma with Distinction) combining rigorous hardware fundamentals with software engineering. Experienced in RTL design, static timing analysis (STA), digital/analog electronics, and benchtop hardware testing, alongside developing C++ event-driven circuit simulators and Python-based test automation. Adept at building high-performance algorithmic tools and bridging the gap between semiconductor architectures and software execution to solve complex VLSI and EDA challenges.",
+    highlights: [
+      {
+        label: "VLSI & Hardware",
+        details: "RTL design, static timing analysis (STA), analog/digital electronics, and benchtop hardware testing."
+      },
+      {
+        label: "Software",
+        details: "C++ event-driven simulation, Python test automation, algorithmic tooling, and software execution."
+      },
+      {
+        label: "Focus",
+        details: "Bridging silicon and code to solve complex VLSI and EDA challenges."
+      }
+    ],
     education: [
       {
         title: "B.E. ECE",
