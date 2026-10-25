@@ -3,6 +3,19 @@ import { motion, useReducedMotion } from 'framer-motion';
 import { ArrowDownRight, ArrowUpRight, Cpu, Github, Plus, X } from 'lucide-react';
 import { portfolioContent, projectCategories } from '../data/portfolio.js';
 
+function ProjectDetailList({ title, items }) {
+  if (!items?.length) return null;
+
+  return (
+    <section className="project-detail-section">
+      <h3>{title}</h3>
+      <ul>
+        {items.map((item) => <li key={item}>{item}</li>)}
+      </ul>
+    </section>
+  );
+}
+
 export default function Projects() {
   const [selectedProject, setSelectedProject] = useState(null);
   const [activeFilter, setActiveFilter] = useState('All');
@@ -212,11 +225,45 @@ export default function Projects() {
             <p className="section-eyebrow">{portfolioContent.projectActions.detailsHeading}</p>
             <h2 id="project-dialog-title">{selectedProject.title}</h2>
             <p className="project-dialog-description">{selectedProject.description}</p>
-            <div className="project-tags" aria-label={portfolioContent.projectActions.technologyLabel}>
-              {selectedProject.tech.map((technology) => (
-                <span className="project-tag" key={technology}>{technology}</span>
-              ))}
-            </div>
+            {selectedProject.details ? (
+              <div className="project-detail-content">
+                <ProjectDetailList title="Objectives" items={selectedProject.details.objectives} />
+                <ProjectDetailList title="Key Features" items={selectedProject.details.features} />
+                <ProjectDetailList title="Hardware Components" items={selectedProject.details.hardwareComponents} />
+                {selectedProject.details.technologies?.length > 0 && (
+                  <section className="project-detail-section">
+                    <h3>{portfolioContent.projectActions.technologyLabel}</h3>
+                    <div className="project-detail-tech-groups">
+                      {selectedProject.details.technologies.map(({ label, items }) => (
+                        <div className="project-detail-tech-group" key={label}>
+                          <h4>{label}</h4>
+                          <div className="project-tags">
+                            {items.map((technology) => (
+                              <span className="project-tag" key={technology}>{technology}</span>
+                            ))}
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </section>
+                )}
+                <ProjectDetailList title="Security Measures" items={selectedProject.details.securityMeasures} />
+                <ProjectDetailList title="Implementation Highlights" items={selectedProject.details.implementationHighlights} />
+                <ProjectDetailList title="Future Enhancements" items={selectedProject.details.futureEnhancements} />
+                {selectedProject.details.outcome && (
+                  <section className="project-detail-section">
+                    <h3>Outcome</h3>
+                    <p>{selectedProject.details.outcome}</p>
+                  </section>
+                )}
+              </div>
+            ) : (
+              <div className="project-tags" aria-label={portfolioContent.projectActions.technologyLabel}>
+                {selectedProject.tech.map((technology) => (
+                  <span className="project-tag" key={technology}>{technology}</span>
+                ))}
+              </div>
+            )}
             <div className="project-dialog-actions">
               {selectedProject.liveLink && (
                 <a

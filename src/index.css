@@ -1357,8 +1357,10 @@
 
 .project-dialog {
   position: relative;
-  width: min(100%, 600px);
+  width: min(100%, 760px);
+  max-height: calc(100vh - 48px);
   padding: clamp(26px, 5vw, 44px);
+  overflow-y: auto;
   border: 1px solid var(--portfolio-border);
   border-radius: var(--portfolio-radius-lg);
   background: var(--portfolio-bg);
@@ -1395,6 +1397,54 @@
   color: var(--portfolio-muted);
   font-size: 15px;
   line-height: 1.8;
+}
+
+.project-detail-content {
+  margin-top: 28px;
+  display: grid;
+  gap: 24px;
+}
+
+.project-detail-section h3 {
+  margin: 0 0 11px;
+  color: var(--portfolio-text);
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: -0.025em;
+}
+
+.project-detail-section p,
+.project-detail-section ul {
+  margin: 0;
+  color: var(--portfolio-muted);
+  font-size: 13px;
+  line-height: 1.75;
+}
+
+.project-detail-section ul {
+  padding-left: 20px;
+}
+
+.project-detail-section li + li {
+  margin-top: 4px;
+}
+
+.project-detail-tech-groups {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 16px;
+}
+
+.project-detail-tech-group h4 {
+  margin: 0;
+  color: var(--portfolio-dim);
+  font: 500 10px/1.5 var(--portfolio-mono);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.project-detail-tech-group .project-tags {
+  margin-top: 8px;
 }
 
 .project-dialog-actions {

@@ -53,6 +53,33 @@ export const projectCategories = [
         title: "Student Management System",
         description: "A web-based system designed to efficiently store and manage student personal and academic records. Automates record handling to reduce manual errors.",
         tech: ["Java", "MySQL", "HTML/CSS"],
+        details: {
+          objectives: [
+            "Design an efficient student record management system",
+            "Automate data entry and retrieval processes",
+            "Reduce manual errors in record keeping",
+            "Provide secure access to student information"
+          ],
+          features: [
+            "Student Registration & Profile Management",
+            "Academic Records Tracking",
+            "Search & Filter Functionality",
+            "Secure Authentication System",
+            "Report Generation"
+          ],
+          technologies: [
+            { label: "Backend", items: ["Java", "JDBC"] },
+            { label: "Database", items: ["MySQL"] },
+            { label: "Frontend", items: ["HTML5", "CSS3", "JavaScript"] }
+          ],
+          implementationHighlights: [
+            "Implemented CRUD operations for student records",
+            "Designed normalized database schema",
+            "Created responsive user interface",
+            "Integrated form validation and error handling"
+          ],
+          outcome: "Successfully developed a functional student management system that streamlines administrative tasks and improves data accuracy."
+        },
         liveLink: "https://student-management-system-eight-lake.vercel.app/",
         githubLink: "https://github.com/Mathidevdevil/Student-Management-System"
       },
@@ -60,6 +87,33 @@ export const projectCategories = [
         title: "Online Shopping Website",
         description: "A responsive e-commerce web application allowing users to browse products and manage a shopping cart. Features a clean UI and smooth navigation.",
         tech: ["React", "HTML/CSS", "JavaScript"],
+        details: {
+          objectives: [
+            "Build a modern e-commerce platform",
+            "Implement responsive design for all devices",
+            "Create intuitive user experience",
+            "Develop efficient cart management system"
+          ],
+          features: [
+            "Product Catalog with Search & Filters",
+            "Shopping Cart Management",
+            "Responsive Design",
+            "Product Detail Pages",
+            "User-friendly Navigation"
+          ],
+          technologies: [
+            { label: "Frontend", items: ["React.js", "JavaScript", "HTML5", "CSS3"] },
+            { label: "State Management", items: ["React Hooks"] },
+            { label: "Styling", items: ["CSS3", "Responsive Design"] }
+          ],
+          implementationHighlights: [
+            "Developed reusable React components",
+            "Implemented state management for cart functionality",
+            "Created responsive layouts for mobile and desktop",
+            "Optimized performance with React best practices"
+          ],
+          outcome: "Delivered a fully functional e-commerce website with smooth user experience and modern design aesthetics."
+        },
         liveLink: "https://online-shopping-mu-six.vercel.app/",
         githubLink: "https://github.com/Mathidevdevil/online-shopping-"
       }
@@ -72,12 +126,69 @@ export const projectCategories = [
         title: "Student Performance Prediction",
         description: "A machine learning project predicting student academic performance using historical data. Focuses on data preprocessing and ML workflows.",
         tech: ["Python", "Pandas", "Scikit-learn"],
+        details: {
+          objectives: [
+            "Predict student academic performance accurately",
+            "Identify key factors affecting student success",
+            "Implement data preprocessing pipeline",
+            "Compare multiple ML algorithms for best results"
+          ],
+          features: [
+            "Data Preprocessing & Cleaning",
+            "Feature Engineering",
+            "Multiple ML Model Training",
+            "Model Evaluation & Comparison",
+            "Performance Visualization"
+          ],
+          technologies: [
+            { label: "Language", items: ["Python"] },
+            { label: "Libraries", items: ["Pandas", "NumPy", "Scikit-learn", "Matplotlib", "Seaborn"] },
+            { label: "Algorithms", items: ["Linear Regression", "Decision Trees", "Random Forest"] }
+          ],
+          implementationHighlights: [
+            "Performed comprehensive data analysis and visualization",
+            "Engineered relevant features from raw data",
+            "Trained and evaluated multiple ML models",
+            "Achieved high prediction accuracy",
+            "Generated insights on performance factors"
+          ],
+          outcome: "Successfully built a predictive model that helps identify at-risk students and understand key performance indicators in academic success."
+        },
         githubLink: "https://github.com/Mathidevdevil/Student-management-system-"
       },
       {
         title: "1-Bit MIMO Precoding in DACs using Deep Learning",
         description: "Deep learning-based precoding framework for massive MIMO systems with 1-bit DACs, targeting low-cost and energy-efficient communication. Final year B.E. ECE project.",
         tech: ["Python", "PyTorch", "CNN"],
+        details: {
+          objectives: [
+            "Design a deep learning-based precoding framework for massive MIMO systems",
+            "Optimize communication with 1-bit DACs for low-cost implementation",
+            "Reduce interference and overcome hardware constraints",
+            "Achieve energy-efficient wireless communication"
+          ],
+          features: [
+            "Residual Neural Network Architecture",
+            "CSI to Precoding Vector Mapping",
+            "Interference Reduction Algorithms",
+            "Hardware Constraint Optimization",
+            "Energy-Efficient Communication Design"
+          ],
+          technologies: [
+            { label: "Language", items: ["Python"] },
+            { label: "Framework", items: ["PyTorch"] },
+            { label: "Techniques", items: ["Convolutional Neural Networks (CNN)", "Deep Learning", "Residual Networks"] },
+            { label: "Libraries", items: ["SciPy", "NumPy", "Matplotlib"] }
+          ],
+          implementationHighlights: [
+            "Designed residual neural network to map CSI to optimized precoding vectors",
+            "Implemented deep learning framework for massive MIMO systems",
+            "Addressed hardware constraints of 1-bit DACs",
+            "Reduced interference in multi-user communication scenarios",
+            "Achieved significant performance improvement over conventional methods"
+          ],
+          outcome: "Successfully developed a deep learning-based precoding solution that enables low-cost, energy-efficient massive MIMO communication systems while maintaining high performance despite 1-bit DAC hardware constraints. This B.E. ECE final year project demonstrated the practical application of deep learning in wireless communication systems."
+        },
         githubLink: "https://github.com/Mathidevdevil/1-Bit-MIMO-Precoding-in-DACs-using-Deep-Learning"
       }
     ]
@@ -89,6 +200,56 @@ export const projectCategories = [
         title: "Smart Lock System",
         description: "An IoT-based security solution with remote access, real-time monitoring, and camera-based authentication for enhanced door security.",
         tech: ["ESP32-CAM", "Embedded C", "Blynk IoT"],
+        details: {
+          objectives: [
+            "Design a secure IoT-enabled smart lock system",
+            "Enable remote lock control via mobile application",
+            "Enhance security using camera monitoring and notifications",
+            "Provide real-time status updates and activity logs"
+          ],
+          features: [
+            "Remote Lock & Unlock Control",
+            "Live Camera Monitoring",
+            "Mobile App Control using Blynk",
+            "Instant Notifications for Door Activity",
+            "Activity Logs for Access Tracking",
+            "Wi-Fi Enabled IoT Communication"
+          ],
+          hardwareComponents: [
+            "ESP32-CAM Microcontroller",
+            "Camera Module (OV2640)",
+            "Motorized Locking Mechanism",
+            "TIP122 Darlington Transistor",
+            "FTDI USB-to-Serial Interface",
+            "Power Supply & Connecting Components"
+          ],
+          technologies: [
+            { label: "Embedded", items: ["Embedded C", "Arduino"] },
+            { label: "Firmware", items: ["ESP32-CAM Firmware"] },
+            { label: "Platform", items: ["Blynk IoT Platform"] },
+            { label: "Communication", items: ["Wi-Fi", "MQTT"] },
+            { label: "Mobile", items: ["Blynk Mobile App"] }
+          ],
+          securityMeasures: [
+            "Encrypted communication between device and mobile app",
+            "Camera-based authentication for access monitoring",
+            "Secure Wi-Fi connectivity (WPA/WPA2)",
+            "Controlled access via authenticated mobile application"
+          ],
+          implementationHighlights: [
+            "Programmed ESP32-CAM to handle camera capture, Wi-Fi communication, and lock control",
+            "Integrated motor driver circuit using TIP122 transistor",
+            "Implemented real-time notifications and lock status updates via Blynk",
+            "Successfully tested remote access and alert mechanisms"
+          ],
+          futureEnhancements: [
+            "Biometric authentication (Fingerprint / Face Recognition)",
+            "AI-based access prediction",
+            "Blockchain-based tamper-proof access logs",
+            "Integration with smart home ecosystems"
+          ],
+          outcome: "The project successfully demonstrated an IoT-based smart security system that improves convenience, safety, and real-time monitoring. It provided hands-on experience in embedded systems, IoT communication, and hardware-software integration."
+        },
         githubLink: "https://github.com/Mathidevdevil/Smart-lock-system"
       }
     ]

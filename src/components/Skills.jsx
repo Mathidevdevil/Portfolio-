@@ -47,17 +47,28 @@ const skillIcons = {
   'Digital Electronics': Cpu,
 };
 
-function SkillItems({ items }) {
+function SkillItems({ items, prefersReducedMotion }) {
   return (
     <div className="skill-tags">
-      {items.map(({ name }) => {
+      {items.map(({ name }, index) => {
         const Icon = skillIcons[name] || Code2;
 
         return (
-          <span className="skill-tag" key={name}>
+          <motion.span
+            className="skill-tag"
+            key={name}
+            initial={{ opacity: 0, scale: prefersReducedMotion ? 1 : 0.82, y: prefersReducedMotion ? 0 : 6 }}
+            whileInView={{ opacity: 1, scale: 1, y: 0 }}
+            viewport={{ once: false, amount: 0.8 }}
+            transition={{
+              duration: prefersReducedMotion ? 0 : 0.35,
+              delay: prefersReducedMotion ? 0 : index * 0.07,
+              ease: [0.16, 1, 0.3, 1],
+            }}
+          >
             <Icon size={15} aria-hidden="true" />
             <span>{name}</span>
-          </span>
+          </motion.span>
         );
       })}
     </div>
@@ -69,10 +80,10 @@ export default function Skills() {
   const reveal = (index = 0) => ({
     initial: { opacity: 0, y: prefersReducedMotion ? 0 : 18 },
     whileInView: { opacity: 1, y: 0 },
-    viewport: { once: true, margin: '-70px' },
+    viewport: { once: false, margin: '-70px' },
     transition: {
-      duration: prefersReducedMotion ? 0 : 0.55,
-      delay: prefersReducedMotion ? 0 : index * 0.09,
+      duration: prefersReducedMotion ? 0 : 0.35,
+      delay: prefersReducedMotion ? 0 : index * 0.07,
       ease: [0.16, 1, 0.3, 1],
     },
   });
@@ -123,7 +134,10 @@ export default function Skills() {
                       </span>
                       <h4>{category.title}</h4>
                     </div>
-                    <SkillItems items={category.skills.map((name) => ({ name }))} />
+                    <SkillItems
+                      items={category.skills.map((name) => ({ name }))}
+                      prefersReducedMotion={prefersReducedMotion}
+                    />
                   </motion.article>
                 );
               })}
@@ -137,7 +151,7 @@ export default function Skills() {
               scale: 1.025,
               transition: { duration: 0.2, ease: [0.16, 1, 0.3, 1] },
             }}
-            {...reveal(1)}
+            {...reveal(skillCategories.length)}
             aria-labelledby="silicon-skills-title"
           >
             <div className="skill-silicon-heading">
@@ -146,7 +160,7 @@ export default function Skills() {
               </span>
               <h3 id="silicon-skills-title">Silicon</h3>
             </div>
-            <SkillItems items={siliconSkills} />
+            <SkillItems items={siliconSkills} prefersReducedMotion={prefersReducedMotion} />
           </motion.article>
         </div>
       </div>
