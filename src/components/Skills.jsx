@@ -61,8 +61,8 @@ function SkillItems({ items, prefersReducedMotion }) {
             whileInView={{ opacity: 1, scale: 1, y: 0 }}
             viewport={{ once: false, amount: 0.8 }}
             transition={{
-              duration: prefersReducedMotion ? 0 : 0.35,
-              delay: prefersReducedMotion ? 0 : index * 0.07,
+              duration: prefersReducedMotion ? 0 : 0.55,
+              delay: prefersReducedMotion ? 0 : index * 0.1,
               ease: [0.16, 1, 0.3, 1],
             }}
           >
@@ -82,8 +82,8 @@ export default function Skills() {
     whileInView: { opacity: 1, y: 0 },
     viewport: { once: false, margin: '-70px' },
     transition: {
-      duration: prefersReducedMotion ? 0 : 0.35,
-      delay: prefersReducedMotion ? 0 : index * 0.07,
+      duration: prefersReducedMotion ? 0 : 0.55,
+      delay: prefersReducedMotion ? 0 : index * 0.1,
       ease: [0.16, 1, 0.3, 1],
     },
   });

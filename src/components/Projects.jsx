@@ -26,6 +26,8 @@ export default function Projects() {
     if (!selectedProject) return undefined;
 
     const previouslyFocused = document.activeElement;
+    const previousBodyOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
     dialogRef.current?.focus();
 
     const handleKeyDown = (event) => {
@@ -54,6 +56,7 @@ export default function Projects() {
     document.addEventListener('keydown', handleKeyDown);
     return () => {
       document.removeEventListener('keydown', handleKeyDown);
+      document.body.style.overflow = previousBodyOverflow;
       if (previouslyFocused instanceof HTMLElement) previouslyFocused.focus();
     };
   }, [selectedProject]);
@@ -62,6 +65,7 @@ export default function Projects() {
     if (activeFilter === 'All') return true;
     if (activeFilter === 'Full Stack') return category.startsWith('Full Stack');
     if (activeFilter === 'ML') return category.startsWith('Machine Learning');
+    if (activeFilter === 'IoT') return category.startsWith('IoT');
     return category.startsWith('VLSI');
   });
 

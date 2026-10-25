@@ -48,14 +48,17 @@ function App() {
         className={`portfolio-app${isLoading ? ' is-loading' : ''}`}
         aria-hidden={isLoading}
       >
+        <a className="skip-link" href="#main-content">Skip to main content</a>
         <Navbar />
-        <Hero />
-        <About />
-        <Experience />
-        <Projects />
-        <Skills />
-        <Certifications />
-        <Contact />
+        <main id="main-content" tabIndex="-1">
+          <Hero />
+          <About />
+          <Experience />
+          <Projects />
+          <Skills />
+          <Certifications />
+          <Contact />
+        </main>
         <Footer />
       </div>
     </>
