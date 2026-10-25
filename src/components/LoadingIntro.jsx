@@ -18,6 +18,7 @@ export default function LoadingIntro({ name, isExiting }) {
           <span className="loading-intro-logo-line">
             <i>M A T H I</i>
           </span>
+          <span className="loading-intro-welcome">Welcome Let’s Explore</span>
         </p>
       </div>
     </div>
