@@ -3,6 +3,7 @@ import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
 import Projects from './components/Projects';
+import Learning from './components/Learning';
 import Skills from './components/Skills';
 import Experience from './components/Experience';
 import Certifications from './components/Certifications';
@@ -55,6 +56,7 @@ function App() {
           <About />
           <Experience />
           <Projects />
+          <Learning />
           <Skills />
           <Certifications />
           <Contact />

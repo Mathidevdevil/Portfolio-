@@ -339,8 +339,8 @@ export const contactDetails = [
   { label: "Alternative mobile", value: "+91 9363250852", href: "tel:+919363250852", icon: "phone" },
   { label: "Email", value: "mathiayarasuarumugamk@gmail.com", href: "mailto:mathiayarasuarumugamk@gmail.com", icon: "email" },
   { label: "Alternative email", value: "mathiyarasu2920011@outlook.com", href: "mailto:mathiyarasu2920011@outlook.com", icon: "email" },
-  { label: "GitHub", value: "github.com/Mathidevdevil", href: "https://github.com/Mathidevdevil", icon: "github" },
-  { label: "LinkedIn", value: "linkedin.com/in/mathiyarasu2001", href: "https://linkedin.com/in/mathiyarasu2001", icon: "linkedin" }
+  { label: "GitHub", href: "https://github.com/Mathidevdevil", icon: "github" },
+  { label: "LinkedIn", href: "https://linkedin.com/in/mathiyarasu2001", icon: "linkedin" }
 ];
 
 export const socialLinks = [
@@ -369,6 +369,7 @@ export const portfolioContent = {
     { label: "About", id: "about" },
     { label: "Experience", id: "experience" },
     { label: "Projects", id: "projects" },
+    { label: "Learning", id: "learning" },
     { label: "Skills", id: "skills" },
     { label: "Certifications", id: "certifications" },
     { label: "Contact", id: "contact" }
@@ -391,6 +392,7 @@ export const portfolioContent = {
     about: "About Me.",
     experience: "Experience.",
     projects: "Selected Projects.",
+    learning: "Currently Learning.",
     skills: "Core Competencies.",
     certifications: "Certifications."
   },
