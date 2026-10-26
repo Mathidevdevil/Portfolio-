@@ -5,6 +5,8 @@ import * as THREE from 'three';
 
 const ENABLE_MOUSE_TILT = true;
 const CHIP_SCALE = 1;
+const MOBILE_PIXEL_RATIO = 4;
+const DESKTOP_MAX_PIXEL_RATIO = 2;
 const CORE_GLOW_SPEED = 1.25;
 const BASE_TILT = { x: 0.12, y: 0.34 };
 const PACKAGE_COLOR = '#252c38';
@@ -217,12 +219,12 @@ function ChipScene({
         <group
           ref={assemblyRef}
           rotation={[BASE_TILT.x, BASE_TILT.y, 0]}
-          scale={CHIP_SCALE}
+          scale={mobile ? CHIP_SCALE * 1.24 : CHIP_SCALE}
         >
           <RoundedBox
             args={[2.42, 0.42, 2.42]}
             radius={0.16}
-            smoothness={mobile ? 2 : 4}
+            smoothness={4}
             position={[0, 0.22, 0]}
             material={materials.package}
             castShadow={!mobile}
@@ -231,14 +233,14 @@ function ChipScene({
           <RoundedBox
             args={[1.62, 0.1, 1.62]}
             radius={0.12}
-            smoothness={mobile ? 2 : 4}
+            smoothness={4}
             position={[0, 0.48, 0]}
             material={materials.package}
           />
           <RoundedBox
             args={[1.48, 0.15, 1.48]}
             radius={0.09}
-            smoothness={mobile ? 2 : 4}
+            smoothness={4}
             position={[0, 0.56, 0]}
             material={materials.die}
             castShadow={!mobile}
@@ -251,7 +253,7 @@ function ChipScene({
               <RoundedBox
                 args={[0.105, 0.18, 0.07]}
                 radius={0.024}
-                smoothness={mobile ? 1 : 3}
+                smoothness={mobile ? 2 : 3}
                 position={vertical.position}
                 rotation={vertical.rotation}
                 material={materials.pin}
@@ -260,7 +262,7 @@ function ChipScene({
               <RoundedBox
                 args={[0.105, 0.055, 0.24]}
                 radius={0.02}
-                smoothness={mobile ? 1 : 3}
+                smoothness={mobile ? 2 : 3}
                 position={foot.position}
                 rotation={foot.rotation}
                 material={materials.pin}
@@ -285,7 +287,7 @@ function ChipScene({
                 material={materials.pulse}
                 scale={0.025}
               >
-                <sphereGeometry args={[1, mobile ? 5 : 8, mobile ? 5 : 8]} />
+                <sphereGeometry args={[1, 8, 8]} />
               </mesh>
             </React.Fragment>
           ))}
@@ -294,7 +296,7 @@ function ChipScene({
               key={`node-${index}`}
               args={[0.16, 0.12, 0.16]}
               radius={0.035}
-              smoothness={mobile ? 1 : 2}
+              smoothness={2}
               position={position}
               material={materials.nodes[row]}
               castShadow={!mobile}
@@ -339,10 +341,20 @@ function ChipAssembly({
       aria-hidden="true"
     >
       <Canvas
-        dpr={[1, mobile ? 1 : 2]}
+        dpr={mobile
+          ? MOBILE_PIXEL_RATIO
+          : Math.min(window.devicePixelRatio || 1, DESKTOP_MAX_PIXEL_RATIO)}
         frameloop="demand"
-        camera={{ position: [3.1, 7.2, 4.2], fov: 37 }}
-        gl={{ alpha: true, antialias: !mobile, powerPreference: 'low-power' }}
+        camera={{
+          position: mobile ? [2.8, 6.5, 3.8] : [3.1, 7.2, 4.2],
+          fov: mobile ? 35 : 37,
+        }}
+        gl={{
+          alpha: true,
+          antialias: true,
+          powerPreference: 'high-performance',
+          precision: 'highp',
+        }}
         onCreated={({ gl }) => {
           gl.setClearColor(0x000000, 0);
           onReady?.();
