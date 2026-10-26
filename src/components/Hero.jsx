@@ -1,4 +1,4 @@
-import React, { Suspense, lazy, useState } from 'react';
+import React, { Suspense, lazy, useEffect, useState } from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
 import { ArrowDownRight, ArrowUpRight, Mail } from 'lucide-react';
 import { useRef } from 'react';
@@ -10,7 +10,25 @@ export default function Hero() {
   const prefersReducedMotion = useReducedMotion();
   const heroRef = useRef(null);
   const [chip3DReady, setChip3DReady] = useState(false);
+  const [loadChip3D, setLoadChip3D] = useState(false);
   const [projectsAction, resumeAction, contactAction] = portfolioContent.heroActions;
+
+  useEffect(() => {
+    let timeoutId;
+    let idleId;
+
+    if ('requestIdleCallback' in window) {
+      idleId = window.requestIdleCallback(() => setLoadChip3D(true), { timeout: 1200 });
+    } else {
+      timeoutId = window.setTimeout(() => setLoadChip3D(true), 300);
+    }
+
+    return () => {
+      if (idleId !== undefined) window.cancelIdleCallback(idleId);
+      window.clearTimeout(timeoutId);
+    };
+  }, []);
+
   const enter = (delay = 0) => ({
     initial: { opacity: 0, y: prefersReducedMotion ? 0 : 18 },
     animate: { opacity: 1, y: 0 },
@@ -104,13 +122,17 @@ export default function Hero() {
         >
           <div className="chip-ornament chip-ornament-top" />
           <div className="chip-ornament chip-ornament-bottom" />
-          <Suspense fallback={<div className="chip3d-fallback">{chipFallback}</div>}>
-            <Chip3D
-              reducedMotion={prefersReducedMotion}
-              onReady={() => setChip3DReady(true)}
-              fallback={chipFallback}
-            />
-          </Suspense>
+          {loadChip3D ? (
+            <Suspense fallback={<div className="chip3d-fallback">{chipFallback}</div>}>
+              <Chip3D
+                reducedMotion={prefersReducedMotion}
+                onReady={() => setChip3DReady(true)}
+                fallback={chipFallback}
+              />
+            </Suspense>
+          ) : (
+            <div className="chip3d-fallback">{chipFallback}</div>
+          )}
           <svg className="hero-waveform" viewBox="0 0 520 90" fill="none">
             <path className="wave-guide" d="M0 45h520" />
             <path className="wave-line wave-line-one" d="M0 45h52V21h42v48h50V34h58v22h60V17h48v54h46V37h57v18h52v-10h55" />

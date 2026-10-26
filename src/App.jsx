@@ -23,11 +23,11 @@ function App() {
 
     const previousOverflow = document.body.style.overflow;
     document.body.style.overflow = 'hidden';
-    const exitTimer = window.setTimeout(() => setIsExiting(true), 1800);
+    const exitTimer = window.setTimeout(() => setIsExiting(true), 400);
     const finishTimer = window.setTimeout(() => {
       document.body.style.overflow = previousOverflow;
       setIsLoading(false);
-    }, 2700);
+    }, 900);
 
     return () => {
       document.body.style.overflow = previousOverflow;

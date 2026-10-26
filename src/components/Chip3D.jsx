@@ -1,11 +1,11 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
-import { ContactShadows, Environment, Float, Line, RoundedBox } from '@react-three/drei';
+import { ContactShadows, Float, Line, RoundedBox } from '@react-three/drei';
 import * as THREE from 'three';
 
 const ENABLE_MOUSE_TILT = true;
 const CHIP_SCALE = 1;
-const MOBILE_PIXEL_RATIO = 4;
+const MOBILE_MAX_PIXEL_RATIO = 1.75;
 const DESKTOP_MAX_PIXEL_RATIO = 2;
 const CORE_GLOW_SPEED = 1.25;
 const BASE_TILT = { x: 0.12, y: 0.34 };
@@ -94,6 +94,7 @@ function ChipScene({
   const assemblyRef = useRef(null);
   const coreMaterial = useRef(null);
   const pulseMeshes = useRef([]);
+  const animationTimeout = useRef(null);
   const { invalidate } = useThree();
 
   const materials = useMemo(() => ({
@@ -139,6 +140,12 @@ function ChipScene({
 
   useEffect(() => {
     if (active) invalidate();
+    return () => {
+      if (animationTimeout.current !== null) {
+        window.clearTimeout(animationTimeout.current);
+        animationTimeout.current = null;
+      }
+    };
   }, [active, invalidate]);
 
   useFrame((state, delta) => {
@@ -189,7 +196,12 @@ function ChipScene({
       }
     });
 
-    invalidate();
+    if (animationTimeout.current === null) {
+      animationTimeout.current = window.setTimeout(() => {
+        animationTimeout.current = null;
+        invalidate();
+      }, mobile ? 1000 / 30 : 1000 / 45);
+    }
   });
 
   return (
@@ -197,7 +209,6 @@ function ChipScene({
       <ambientLight intensity={darkMode ? 0.72 : 0.96} />
       <directionalLight position={[3, 6, 4]} intensity={darkMode ? 2.5 : 2} />
       <pointLight position={[-3, 2, -2]} color={TRACE_COLOR} intensity={darkMode ? 16 : 10} distance={8} />
-      <Environment preset="warehouse" />
       {!darkMode && !mobile && (
         <ContactShadows
           position={[0, -0.055, 0]}
@@ -342,7 +353,7 @@ function ChipAssembly({
     >
       <Canvas
         dpr={mobile
-          ? MOBILE_PIXEL_RATIO
+          ? Math.min(window.devicePixelRatio || 1, MOBILE_MAX_PIXEL_RATIO)
           : Math.min(window.devicePixelRatio || 1, DESKTOP_MAX_PIXEL_RATIO)}
         frameloop="demand"
         camera={{
