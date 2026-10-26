@@ -288,7 +288,7 @@ export const certificates = [
   {
     name: "VLSI System On Chip Design",
     issuer: "Maven Silicon",
-    link: null,
+    link: "https://drive.google.com/file/d/1I5tPlE3dfYTmyyjvSj7FfqS0GrFcfOhZ/view?usp=sharing",
     image: mavenSiliconLogo
   }
 ];
