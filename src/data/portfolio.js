@@ -1,3 +1,8 @@
+import mavenSiliconLogo from "../assets/maven-silicon-logo.jpg";
+import courseraLogo from "../assets/coursera-logo.png";
+import guviLogo from "../assets/hcl-guvi-logo.webp";
+import networkEssentialsCertificate from "../assets/network-essentials-certificate.jpg";
+
 export const portfolioData = {
   name: "Mathiyarasu Arumugam"
 };
@@ -253,32 +258,38 @@ export const certificates = [
   {
     name: "Crash Course on Python",
     issuer: "Coursera",
-    link: "https://www.coursera.org/account/accomplishments/verify/H6D8ZLTH7BPS"
+    link: "https://www.coursera.org/account/accomplishments/verify/H6D8ZLTH7BPS",
+    image: courseraLogo
   },
   {
     name: "Network Essential",
-    issuer: "Certification",
-    link: "https://drive.google.com/file/d/1Dgtcf-9z4UcIyXHlXAu4QvTGKmPpfhzR/view"
+    issuer: "Cisco Networking Academy",
+    link: "https://drive.google.com/file/d/1Dgtcf-9z4UcIyXHlXAu4QvTGKmPpfhzR/view",
+    image: networkEssentialsCertificate
   },
   {
     name: "HTML/CSS",
     issuer: "GUVI",
-    link: "https://www.guvi.in/verify-certificate?id=38C211D824XA1Mg7i0"
+    link: "https://www.guvi.in/share-certificate/38C211D824XA1Mg7i0",
+    image: guviLogo
   },
   {
     name: "JavaScript",
     issuer: "GUVI",
-    link: "https://www.guvi.in/verify-certificate?id=XJ27p611O679K044q8"
+    link: "https://www.guvi.in/share-certificate/XJ27p611O679K044q8",
+    image: guviLogo
   },
   {
     name: "Git",
     issuer: "GUVI",
-    link: "https://www.guvi.in/verify-certificate?id=4694i412B271F2pS71"
+    link: "https://www.guvi.in/share-certificate/4694i412B271F2pS71",
+    image: guviLogo
   },
   {
     name: "VLSI System On Chip Design",
     issuer: "Maven Silicon",
-    link: null
+    link: null,
+    image: mavenSiliconLogo
   }
 ];
 

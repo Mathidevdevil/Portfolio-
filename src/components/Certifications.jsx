@@ -51,7 +51,7 @@ export default function Certifications() {
 
             return (
               <motion.article
-                className="certificate-card"
+                className={`certificate-card${certificate.image ? ' certificate-card-has-image' : ''}`}
                 key={certificate.name}
                 initial={{ opacity: 0, y: prefersReducedMotion ? 0 : 16 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -62,6 +62,16 @@ export default function Certifications() {
                   ease: [0.16, 1, 0.3, 1],
                 }}
               >
+                {certificate.image && (
+                  <img
+                    className="certificate-card-image"
+                    src={certificate.image}
+                    alt=""
+                    aria-hidden="true"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                )}
                 {isAvailable ? (
                   <a
                     className="certificate-card-link"
