@@ -707,8 +707,42 @@
   position: relative;
   width: 100%;
   max-width: 550px;
+  aspect-ratio: 520 / 430;
   margin-inline: auto;
   filter: none;
+}
+
+.chip3d-root,
+.chip3d-canvas,
+.chip3d-fallback {
+  position: absolute;
+  inset: 0;
+}
+
+.chip3d-root {
+  z-index: 1;
+}
+
+.chip3d-fallback {
+  transition: opacity 280ms ease;
+}
+
+.hero-visual.is-chip-3d-ready .chip3d-fallback {
+  opacity: 0;
+}
+
+.chip3d-canvas > div {
+  position: absolute;
+  inset: 0;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.chip3d-canvas canvas {
+  display: block;
+  width: 100% !important;
+  height: 100% !important;
+  background: transparent !important;
 }
 
 .chip-trace,
@@ -809,6 +843,7 @@
 
 .hero-waveform {
   position: absolute;
+  z-index: 2;
   right: -6%;
   bottom: 2%;
   left: -6%;
