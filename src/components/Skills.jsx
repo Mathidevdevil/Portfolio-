@@ -38,6 +38,7 @@ const skillIcons = {
   Virtuoso: Cpu,
   Multisim: Cpu,
   'Xilinx Vivado': Cpu,
+  'OrCAD X': Cpu,
   'Electric Binary': Cpu,
   Windows: Monitor,
   Linux: Terminal,

@@ -42,23 +42,33 @@ export default function Contact() {
             <div className="contact-link-list">
               {contactDetails.map((detail) => {
                 const Icon = contactIcons[detail.icon];
-                const isExternal = detail.icon === 'github' || detail.icon === 'linkedin';
-
-                return (
-                  <a
-                    className="contact-social-link"
-                    key={detail.label}
-                    href={detail.href}
-                    target={isExternal ? '_blank' : undefined}
-                    rel={isExternal ? 'noopener noreferrer' : undefined}
-                  >
+                const isExternal = detail.href?.startsWith('https://');
+                const content = (
+                  <>
                     <Icon size={17} aria-hidden="true" />
                     <span className="contact-detail-copy">
                       <span className="contact-detail-label">{detail.label}</span>
                       <span className="contact-detail-value">{detail.value}</span>
                     </span>
-                    {isExternal && <span className="contact-social-arrow" aria-hidden="true">↗</span>}
-                  </a>
+                  </>
+                );
+
+                return (
+                  detail.href ? (
+                    <a
+                      className="contact-social-link"
+                      key={detail.label}
+                      href={detail.href}
+                      target={isExternal ? '_blank' : undefined}
+                      rel={isExternal ? 'noopener noreferrer' : undefined}
+                    >
+                      {content}
+                    </a>
+                  ) : (
+                    <div className="contact-social-link" key={detail.label}>
+                      {content}
+                    </div>
+                  )
                 );
               })}
             </div>

@@ -2026,7 +2026,7 @@
   overflow-wrap: anywhere;
 }
 
-.contact-social-link:hover {
+a.contact-social-link:hover {
   transform: translateX(2px);
   border-color: transparent;
   background: var(--portfolio-focus-wash);
@@ -2426,12 +2426,14 @@
   }
 
   .site-footer-content {
-    align-items: flex-start;
+    align-items: center;
     flex-direction: column;
+    text-align: center;
   }
 
   .footer-links {
     gap: 15px;
+    justify-content: center;
   }
 
   .certifications-grid {

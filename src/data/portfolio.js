@@ -279,7 +279,7 @@ export const skillCategories = [
   {
     title: "EDA Tools",
     icon: "cpu",
-    skills: ["LTspice", "Virtuoso", "Multisim", "Xilinx Vivado", "Electric Binary"]
+    skills: ["LTspice", "Virtuoso", "Multisim", "Xilinx Vivado", "OrCAD X", "Electric Binary"]
   },
   {
     title: "Operating Systems",
@@ -331,7 +331,7 @@ export const certificates = [
 
 export const contactContent = {
   heading: "Let's connect.",
-  description: "Reach out by phone, email, GitHub, or LinkedIn."
+  description: "Reach out by phone or email."
 };
 
 export const contactDetails = [
