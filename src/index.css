@@ -973,7 +973,8 @@
 }
 
 .about-education-degree::before,
-.about-education-diploma::before {
+.about-education-diploma::before,
+.about-education-school::before {
   position: absolute;
   z-index: -1;
   inset: 0;
@@ -994,6 +995,15 @@
 .about-education-diploma {
   min-height: 168px;
   background: var(--portfolio-card-on-alt);
+}
+
+.about-education-school {
+  min-height: 168px;
+}
+
+.about-education-school .about-education-image {
+  filter: blur(3px);
+  transform: scale(1.04);
 }
 
 .about-education-top {
@@ -1028,6 +1038,11 @@
   color: var(--portfolio-muted);
   font-size: 13px;
   line-height: 1.6;
+}
+
+.about-education .education-university {
+  margin-top: 3px;
+  font-size: 12px;
 }
 
 .education-period {

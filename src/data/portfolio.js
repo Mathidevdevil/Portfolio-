@@ -380,12 +380,17 @@ export const portfolioContent = {
       {
         title: "B.E. ECE",
         institution: "Government College of Engineering, Erode",
+        university: "Anna University - Chennai",
         period: "Aug 2022 – May 2025"
       },
       {
         title: "Diploma in ECE",
-        institution: "The Kavery Polytechnic College",
+        institution: "The Kavery Polytechnic College, Salem",
         result: "87%"
+      },
+      {
+        title: "High School",
+        institution: "Government High School, Karattupudur, Salem"
       }
     ]
   },

@@ -5,6 +5,7 @@ import { portfolioContent } from '../data/portfolio.js';
 import portrait from '../assets/mathiyarasu-portrait.png';
 import kaveryCampus from '../assets/the-kavery-polytechnic-college-salem.webp';
 import governmentCollege from '../assets/government-college-of-engineering-erode.jpg';
+import governmentHighSchool from '../assets/government-high-school-karattupudur.jpg';
 
 export default function About() {
   const prefersReducedMotion = useReducedMotion();
@@ -43,7 +44,7 @@ export default function About() {
         <div className="about-education-grid" aria-label="Education">
           {portfolioContent.about.education.map((education, index) => (
             <motion.article
-              className={`about-education about-education-${index === 0 ? 'degree' : 'diploma'}`}
+              className={`about-education about-education-${index === 0 ? 'degree' : index === 1 ? 'diploma' : 'school'}`}
               key={education.title}
               {...reveal}
               transition={{ ...reveal.transition, delay: 0.1 + index * 0.12 }}
@@ -66,6 +67,15 @@ export default function About() {
                   loading="lazy"
                 />
               )}
+              {index === 2 && (
+                <img
+                  className="about-education-image"
+                  src={governmentHighSchool}
+                  alt=""
+                  aria-hidden="true"
+                  loading="lazy"
+                />
+              )}
               <div className="about-education-top">
                 <div className="about-education-icon" aria-hidden="true">
                   <GraduationCap size={18} />
@@ -75,6 +85,9 @@ export default function About() {
               </div>
               <h3>{education.title}</h3>
               <p>{education.institution}</p>
+              {education.university && (
+                <p className="education-university">{education.university}</p>
+              )}
             </motion.article>
           ))}
         </div>
