@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
-import { ArrowDownRight, ArrowUpRight, Cpu, Github, Plus, X } from 'lucide-react';
+import { ArrowDownRight, ArrowUpRight, Github, X } from 'lucide-react';
 import { portfolioContent, projectCategories } from '../data/portfolio.js';
 
 function ProjectDetailList({ title, items }) {
@@ -65,8 +65,7 @@ export default function Projects() {
     if (activeFilter === 'All') return true;
     if (activeFilter === 'Full Stack') return category.startsWith('Full Stack');
     if (activeFilter === 'ML') return category.startsWith('Machine Learning');
-    if (activeFilter === 'IoT') return category.startsWith('IoT');
-    return category.startsWith('VLSI');
+    return category.startsWith('IoT');
   });
 
   return (
@@ -115,89 +114,73 @@ export default function Projects() {
               }}
             >
               <h3 className="project-category-title">{category.category}</h3>
-              {category.projects.length === 0 ? (
-                <div
-                  className="project-empty-slot"
-                  role="note"
-                  aria-label={portfolioContent.projectActions.emptyVlsiSlot}
-                >
-                  <div className="empty-slot-chip" aria-hidden="true">
-                    <Cpu size={24} />
-                    <Plus size={13} />
-                  </div>
-                  <svg className="empty-slot-wave" viewBox="0 0 220 34" fill="none" aria-hidden="true">
-                    <path d="M0 17h27V8h24v18h26V12h25v10h26V5h25v24h23V15h44" />
-                  </svg>
-                </div>
-              ) : (
-                <div className={`project-grid${category.projects.length === 1 ? ' project-grid-single' : ''}`}>
-                  {category.projects.map((project, projectIndex) => (
-                    <motion.article
-                      className="project-card"
-                      key={project.title}
-                      variants={{
-                        hidden: { opacity: 0, y: prefersReducedMotion ? 0 : 16 },
-                        visible: {
-                          opacity: 1,
-                          y: 0,
-                          transition: {
-                            duration: prefersReducedMotion ? 0 : 0.5,
-                            ease: [0.16, 1, 0.3, 1],
-                          },
+              <div className={`project-grid${category.projects.length === 1 ? ' project-grid-single' : ''}`}>
+                {category.projects.map((project, projectIndex) => (
+                  <motion.article
+                    className="project-card"
+                    key={project.title}
+                    variants={{
+                      hidden: { opacity: 0, y: prefersReducedMotion ? 0 : 16 },
+                      visible: {
+                        opacity: 1,
+                        y: 0,
+                        transition: {
+                          duration: prefersReducedMotion ? 0 : 0.5,
+                          ease: [0.16, 1, 0.3, 1],
                         },
-                      }}
-                    >
-                      <div className="project-card-topline">
-                        <span className="project-index">
-                          {String(categoryIndex + 1).padStart(2, '0')}.{String(projectIndex + 1).padStart(2, '0')}
-                        </span>
-                        {project.githubLink && (
-                          <a
-                            className="project-icon-link"
-                            href={project.githubLink}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            aria-label={`GitHub: ${project.title}`}
-                          >
-                            <Github size={17} aria-hidden="true" />
-                          </a>
-                        )}
-                      </div>
-
-                      <h4>{project.title}</h4>
-                      <p className="project-description">{project.description}</p>
-
-                      <div className="project-tags" aria-label={portfolioContent.projectActions.technologyLabel}>
-                        {project.tech.map((technology) => (
-                          <span className="project-tag" key={technology}>{technology}</span>
-                        ))}
-                      </div>
-
-                      <div className="project-card-actions">
-                        <button
-                          className="project-details-button"
-                          type="button"
-                          onClick={() => setSelectedProject(project)}
+                      },
+                    }}
+                  >
+                    <div className="project-card-topline">
+                      <span className="project-index">
+                        {String(categoryIndex + 1).padStart(2, '0')}.{String(projectIndex + 1).padStart(2, '0')}
+                      </span>
+                      {project.githubLink && (
+                        <a
+                          className="project-icon-link"
+                          href={project.githubLink}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          aria-label={`GitHub: ${project.title}`}
                         >
-                          {portfolioContent.projectActions.viewDetails}
-                          <ArrowDownRight size={16} aria-hidden="true" />
-                        </button>
-                        {project.liveLink && (
-                          <a
-                            className="project-live-link"
-                            href={project.liveLink}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                          >
-                            {portfolioContent.projectActions.liveDemo}
-                            <ArrowUpRight size={14} aria-hidden="true" />
-                          </a>
-                        )}
-                      </div>
-                    </motion.article>
-                  ))}
-                </div>
-              )}
+                          <Github size={17} aria-hidden="true" />
+                        </a>
+                      )}
+                    </div>
+
+                    <h4>{project.title}</h4>
+                    <p className="project-description">{project.description}</p>
+
+                    <div className="project-tags" aria-label={portfolioContent.projectActions.technologyLabel}>
+                      {project.tech.map((technology) => (
+                        <span className="project-tag" key={technology}>{technology}</span>
+                      ))}
+                    </div>
+
+                    <div className="project-card-actions">
+                      <button
+                        className="project-details-button"
+                        type="button"
+                        onClick={() => setSelectedProject(project)}
+                      >
+                        {portfolioContent.projectActions.viewDetails}
+                        <ArrowDownRight size={16} aria-hidden="true" />
+                      </button>
+                      {project.liveLink && (
+                        <a
+                          className="project-live-link"
+                          href={project.liveLink}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          {portfolioContent.projectActions.liveDemo}
+                          <ArrowUpRight size={14} aria-hidden="true" />
+                        </a>
+                      )}
+                    </div>
+                  </motion.article>
+                ))}
+              </div>
             </motion.div>
           ))}
         </div>

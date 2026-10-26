@@ -6,11 +6,16 @@ export default function Navbar() {
   const { navigationLinks } = portfolioContent;
   const [isOpen, setIsOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
-  const [theme, setTheme] = useState('light');
+  const [theme, setTheme] = useState(() => {
+    const savedTheme = window.localStorage.getItem('portfolio-theme');
+    if (savedTheme === 'light' || savedTheme === 'dark') return savedTheme;
+    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  });
   const [scrollProgress, setScrollProgress] = useState(0);
 
   useEffect(() => {
     document.documentElement.dataset.theme = theme;
+    window.localStorage.setItem('portfolio-theme', theme);
     const themeColor = document.querySelector('meta[name="theme-color"]');
     if (themeColor) themeColor.content = theme === 'dark' ? '#000000' : '#FFFFFF';
   }, [theme]);

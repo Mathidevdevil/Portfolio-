@@ -1,13 +1,13 @@
 import React from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
-import { ArrowDownRight, ArrowUpRight } from 'lucide-react';
+import { ArrowDownRight, ArrowUpRight, Mail } from 'lucide-react';
 import { useRef } from 'react';
 import { portfolioContent, portfolioData } from '../data/portfolio.js';
 
 export default function Hero() {
   const prefersReducedMotion = useReducedMotion();
   const heroRef = useRef(null);
-  const [projectsAction, resumeAction] = portfolioContent.heroActions;
+  const [projectsAction, resumeAction, contactAction] = portfolioContent.heroActions;
   const enter = (delay = 0) => ({
     initial: { opacity: 0, y: prefersReducedMotion ? 0 : 18 },
     animate: { opacity: 1, y: 0 },
@@ -59,6 +59,10 @@ export default function Hero() {
             >
               {resumeAction.label}
               <ArrowUpRight size={16} aria-hidden="true" />
+            </a>
+            <a className="hero-button hero-button-secondary" href={contactAction.href}>
+              {contactAction.label}
+              <Mail size={16} aria-hidden="true" />
             </a>
           </motion.div>
         </div>

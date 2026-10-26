@@ -91,14 +91,16 @@ export default function Learning() {
                       [{statusLabels[status]}]
                     </span>
                     <span className="learning-line-topic">{topic}</span>
-                    <span className="learning-line-detail">{detail}</span>
-                    <span className="learning-line-meta">
-                      <time dateTime={updated}>updated {updated}</time>
-                      {proof && (
-                        <a href={proof} target="_blank" rel="noopener noreferrer">
-                          [proof]
-                        </a>
-                      )}
+                    <span className="learning-line-info">
+                      <span className="learning-line-detail">{detail}</span>
+                      <span className="learning-line-meta">
+                        <time dateTime={updated}>updated {updated}</time>
+                        {proof && (
+                          <a href={proof} target="_blank" rel="noopener noreferrer">
+                            [proof]
+                          </a>
+                        )}
+                      </span>
                     </span>
                   </motion.li>
                 ))}

@@ -26,7 +26,7 @@ export default function Certifications() {
 
         <div className="certifications-grid">
           {certificates.map((certificate, index) => {
-            const isAvailable = certificate.link !== '#';
+            const isAvailable = Boolean(certificate.link);
             const content = (
               <>
                 <div className="certificate-topline">
@@ -42,6 +42,9 @@ export default function Certifications() {
                     {portfolioContent.certificateLinkLabel}
                     <ArrowUpRight size={14} aria-hidden="true" />
                   </span>
+                )}
+                {!isAvailable && (
+                  <span className="certificate-link-unavailable">Verification link unavailable</span>
                 )}
               </>
             );

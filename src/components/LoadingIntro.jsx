@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function LoadingIntro({ name, isExiting }) {
+export default function LoadingIntro({ isExiting }) {
   return (
     <div
       className={`loading-intro${isExiting ? ' is-exiting' : ''}`}

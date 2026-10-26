@@ -10,7 +10,6 @@ import Certifications from './components/Certifications';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import LoadingIntro from './components/LoadingIntro';
-import { portfolioData } from './data/portfolio.js';
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -24,11 +23,11 @@ function App() {
 
     const previousOverflow = document.body.style.overflow;
     document.body.style.overflow = 'hidden';
-    const exitTimer = window.setTimeout(() => setIsExiting(true), 3200);
+    const exitTimer = window.setTimeout(() => setIsExiting(true), 1800);
     const finishTimer = window.setTimeout(() => {
       document.body.style.overflow = previousOverflow;
       setIsLoading(false);
-    }, 4100);
+    }, 2700);
 
     return () => {
       document.body.style.overflow = previousOverflow;
@@ -41,7 +40,6 @@ function App() {
     <>
       {isLoading && (
         <LoadingIntro
-          name={portfolioData.name}
           isExiting={isExiting}
         />
       )}

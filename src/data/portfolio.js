@@ -1,48 +1,5 @@
 export const portfolioData = {
-  name: "Mathiyarasu Arumugam",
-  subtitle: "Software & VLSI Verification Engineer",
-  about: "B.E. ECE 2025 graduate from Government College of Engineering, Erode (Anna University, CGPA 7.56). Diploma in ECE from Kavery Polytechnic (87%). Interested in EDA tool software development and VLSI verification (SystemVerilog/UVM). Based in Salem, Tamil Nadu, targeting roles in Bangalore.",
-  experience: [
-    {
-      title: "Full Stack Developer Intern",
-      company: "Besant Technologies, Bangalore",
-    },
-    {
-      title: "ML training",
-      company: "TVS Training and Services",
-    }
-  ],
-  skills: [
-    "Java", "React.js", "Spring Boot", "Python", "MySQL", 
-    "MongoDB", "PyTorch", "C/C++", "Git", "SystemVerilog/UVM"
-  ],
-  projects: [
-    {
-      title: "UART UVM verification environment",
-      description: "Verification of UART using UVM.",
-      stack: ["SystemVerilog", "UVM"]
-    },
-    {
-      title: "VLSI learning hub",
-      description: "Platform for VLSI students.",
-      stack: ["React", "Node.js"]
-    },
-    {
-      title: "Personal Life Operating System",
-      description: "AI assistant web app.",
-      stack: ["Python", "React"]
-    }
-  ],
-  certifications: [
-    { title: "Placeholder Cert 1" },
-    { title: "Placeholder Cert 2" }
-  ],
-  contact: {
-    linkedin: "linkedin.com/in/mathiyarasu2001",
-    email: "mathiyarasuarumugamk@gmail.com",
-    github: "github.com/placeholder",
-    portfolio: "mathi-portfolio-26.vercel.app"
-  }
+  name: "Mathiyarasu Arumugam"
 };
 
 export const projectCategories = [
@@ -51,7 +8,7 @@ export const projectCategories = [
     projects: [
       {
         title: "Student Management System",
-        description: "A web-based system designed to efficiently store and manage student personal and academic records. Automates record handling to reduce manual errors.",
+        description: "Built a Java and MySQL student records app with CRUD workflows, normalized data, and form validation.",
         tech: ["Java", "MySQL", "HTML/CSS"],
         details: {
           objectives: [
@@ -85,7 +42,7 @@ export const projectCategories = [
       },
       {
         title: "Online Shopping Website",
-        description: "A responsive e-commerce web application allowing users to browse products and manage a shopping cart. Features a clean UI and smooth navigation.",
+        description: "Built a responsive React shop with a searchable catalog, product pages, and shopping-cart management.",
         tech: ["React", "HTML/CSS", "JavaScript"],
         details: {
           objectives: [
@@ -124,7 +81,7 @@ export const projectCategories = [
     projects: [
       {
         title: "Student Performance Prediction",
-        description: "A machine learning project predicting student academic performance using historical data. Focuses on data preprocessing and ML workflows.",
+        description: "Predicts student performance from historical data using preprocessing, feature engineering, and model comparison.",
         tech: ["Python", "Pandas", "Scikit-learn"],
         details: {
           objectives: [
@@ -198,7 +155,7 @@ export const projectCategories = [
     projects: [
       {
         title: "Smart Lock System",
-        description: "An IoT-based security solution with remote access, real-time monitoring, and camera-based authentication for enhanced door security.",
+        description: "Built an ESP32-CAM smart lock with remote control, live monitoring, and camera-based access features.",
         tech: ["ESP32-CAM", "Embedded C", "Blynk IoT"],
         details: {
           objectives: [
@@ -254,10 +211,6 @@ export const projectCategories = [
       }
     ]
   },
-  {
-    category: "VLSI Verification",
-    projects: []
-  }
 ];
 
 export const skillCategories = [
@@ -325,13 +278,13 @@ export const certificates = [
   {
     name: "VLSI System On Chip Design",
     issuer: "Maven Silicon",
-    link: "#"
+    link: null
   }
 ];
 
 export const contactContent = {
   heading: "Let's connect.",
-  description: "Reach out by phone or email."
+  description: "Reach out by phone, email, GitHub, or LinkedIn."
 };
 
 export const contactDetails = [
@@ -374,18 +327,18 @@ export const portfolioContent = {
     { label: "Certifications", id: "certifications" },
     { label: "Contact", id: "contact" }
   ],
-  projectFilters: ["All", "Full Stack", "ML", "IoT", "VLSI"],
+  projectFilters: ["All", "Full Stack", "ML", "IoT"],
   projectActions: {
     viewDetails: "View Details",
     liveDemo: "Live Demo",
     github: "GitHub",
     detailsHeading: "Project Details",
-    technologyLabel: "Technologies",
-    emptyVlsiSlot: "Empty VLSI Verification project slot"
+    technologyLabel: "Technologies"
   },
   heroActions: [
     { label: "View Projects", href: "#projects", icon: "projects" },
-    { label: "View Resume", href: "https://mathi-resume.vercel.app/", icon: "resume" }
+    { label: "View Resume", href: "https://mathi-resume.vercel.app/", icon: "resume" },
+    { label: "Get in touch", href: "#contact", icon: "contact" }
   ],
   certificateLinkLabel: "View Certificate",
   sectionTitles: {
