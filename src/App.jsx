@@ -3,6 +3,7 @@ import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
 import Projects from './components/Projects';
+import Products from './components/Products';
 import Learning from './components/Learning';
 import Skills from './components/Skills';
 import Experience from './components/Experience';
@@ -16,6 +17,12 @@ function App() {
   const [isExiting, setIsExiting] = useState(false);
 
   useEffect(() => {
+    try {
+      window.sessionStorage.removeItem('portfolio-intro-viewed');
+    } catch {
+      // ignore
+    }
+
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       setIsLoading(false);
       return undefined;
@@ -23,11 +30,15 @@ function App() {
 
     const previousOverflow = document.body.style.overflow;
     document.body.style.overflow = 'hidden';
-    const exitTimer = window.setTimeout(() => setIsExiting(true), 400);
+
+    const exitTimer = window.setTimeout(() => {
+      setIsExiting(true);
+    }, 1800);
+
     const finishTimer = window.setTimeout(() => {
       document.body.style.overflow = previousOverflow;
       setIsLoading(false);
-    }, 900);
+    }, 2600);
 
     return () => {
       document.body.style.overflow = previousOverflow;
@@ -54,6 +65,7 @@ function App() {
           <About />
           <Experience />
           <Projects />
+          <Products />
           <Learning />
           <Skills />
           <Certifications />

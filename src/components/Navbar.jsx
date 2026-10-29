@@ -72,6 +72,17 @@ export default function Navbar() {
     };
   }, []);
 
+  useEffect(() => {
+    if (!isOpen) return undefined;
+    const handleOutsideClick = (event) => {
+      if (!event.target.closest('.site-nav')) {
+        setIsOpen(false);
+      }
+    };
+    document.addEventListener('pointerdown', handleOutsideClick);
+    return () => document.removeEventListener('pointerdown', handleOutsideClick);
+  }, [isOpen]);
+
   const closeMenu = () => setIsOpen(false);
 
   return (

@@ -60,7 +60,7 @@ function SkillItems({ items, prefersReducedMotion }) {
             key={name}
             initial={{ opacity: 0, scale: prefersReducedMotion ? 1 : 0.82, y: prefersReducedMotion ? 0 : 6 }}
             whileInView={{ opacity: 1, scale: 1, y: 0 }}
-            viewport={{ once: false, amount: 0.8 }}
+            viewport={{ once: true, amount: 0.3 }}
             transition={{
               duration: prefersReducedMotion ? 0 : 0.55,
               delay: prefersReducedMotion ? 0 : index * 0.1,
@@ -81,7 +81,7 @@ export default function Skills() {
   const reveal = (index = 0) => ({
     initial: { opacity: 0, y: prefersReducedMotion ? 0 : 18 },
     whileInView: { opacity: 1, y: 0 },
-    viewport: { once: false, margin: '-70px' },
+    viewport: { once: true, margin: '-70px' },
     transition: {
       duration: prefersReducedMotion ? 0 : 0.55,
       delay: prefersReducedMotion ? 0 : index * 0.1,

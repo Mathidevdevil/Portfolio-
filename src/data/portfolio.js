@@ -218,6 +218,29 @@ export const projectCategories = [
   },
 ];
 
+export const productsData = [
+  {
+    id: "spendwish",
+    title: "Spendwish",
+    subtitle: "Expense Tracker & Travel Budget Planner",
+    tagline: "Smart personal finance management with income tracking, expense categorization, and dedicated travel budget planning.",
+    description: "Spendwish is an all-in-one personal finance management product engineered to give individuals total clarity over their money. Effortlessly track daily income and expenses, organize spending by categories, monitor savings goals, and plan journeys with a specialized travel budgeting engine.",
+    category: "Personal Finance & Web App",
+    badge: "Flagship Product",
+    status: "live",
+    features: [
+      "Income & Expense Tracking: Real-time transaction logging with custom categories and running balances",
+      "Travel Plan Budgeting: Dedicated trip planner to calculate, allocate, and manage itinerary costs on the go",
+      "Financial Analytics: Visual cash-flow breakdowns, spending summaries, and savings projections",
+      "Smart Budget Limits: Category-based expenditure caps to keep spending aligned with financial goals",
+      "Cross-Device Responsive: Smooth, high-performance interface optimized for mobile and desktop tracking"
+    ],
+    tech: ["React.js", "JavaScript", "TailwindCSS", "State Management", "Data Analytics"],
+    liveLink: "",
+    githubLink: "https://github.com/Mathidevdevil/Spendwish"
+  }
+];
+
 export const skillCategories = [
   {
     title: "Frontend",
@@ -303,8 +326,8 @@ export const contactDetails = [
   { label: "Alternative mobile", value: "+91 9363250852", href: "tel:+919363250852", icon: "phone" },
   { label: "Email", value: "mathiayarasuarumugamk@gmail.com", href: "mailto:mathiayarasuarumugamk@gmail.com", icon: "email" },
   { label: "Alternative email", value: "mathiyarasu2920011@outlook.com", href: "mailto:mathiyarasu2920011@outlook.com", icon: "email" },
-  { label: "GitHub", href: "https://github.com/Mathidevdevil", icon: "github" },
-  { label: "LinkedIn", href: "https://linkedin.com/in/mathiyarasu2001", icon: "linkedin" }
+  { label: "GitHub", value: "github.com/Mathidevdevil", href: "https://github.com/Mathidevdevil", icon: "github" },
+  { label: "LinkedIn", value: "linkedin.com/in/mathiyarasu2001", href: "https://linkedin.com/in/mathiyarasu2001", icon: "linkedin" }
 ];
 
 export const socialLinks = [
@@ -333,12 +356,20 @@ export const portfolioContent = {
     { label: "About", id: "about" },
     { label: "Experience", id: "experience" },
     { label: "Projects", id: "projects" },
+    { label: "My Products", id: "products" },
     { label: "Learning", id: "learning" },
     { label: "Skills", id: "skills" },
     { label: "Certifications", id: "certifications" },
     { label: "Contact", id: "contact" }
   ],
   projectFilters: ["All", "Full Stack", "ML", "IoT"],
+  productsFilters: [],
+  productActions: {
+    liveDemo: "Live Product",
+    github: "Source Code",
+    eyebrow: "Featured Product",
+    lead: "A modern smart personal finance tool engineered to give you effortless control over your income, daily expenses, and travel plans."
+  },
   projectActions: {
     viewDetails: "View Details",
     liveDemo: "Live Demo",
@@ -356,6 +387,7 @@ export const portfolioContent = {
     about: "About Me.",
     experience: "Experience.",
     projects: "Selected Projects.",
+    products: "My Products.",
     learning: "Currently Learning.",
     skills: "Core Competencies.",
     certifications: "Certifications."
@@ -400,14 +432,14 @@ export const portfolioContent = {
       company: "Besant Technologies",
       location: "Bangalore",
       date: "Feb 2025 – July 2025",
-      description: "Core Java, Spring Boot, React, Database Management, scalable web apps."
+      description: "Engineered scalable web applications using Core Java, Spring Boot, React, and MySQL database management."
     },
     {
       role: "Machine Learning Trainee",
       company: "TVS Training and Services Limited",
       location: "Chennai",
       date: "June 2024 – July 2024",
-      description: "supervised learning, data preprocessing with Python, Pandas, scikit-learn, model evaluation on real-world datasets"
+      description: "Applied supervised learning algorithms, automated data preprocessing with Python, Pandas, and Scikit-learn, and evaluated model accuracy on real-world datasets."
     }
   ],
   footer: "© 2026 Mathiyarasu Arumugam. All rights reserved."
