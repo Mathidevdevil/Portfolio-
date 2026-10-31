@@ -35,11 +35,38 @@ export default function Hero() {
     transition: { duration: prefersReducedMotion ? 0 : 0.7, ease: [0.16, 1, 0.3, 1], delay },
   });
 
+  const boundsRef = useRef(null);
+  const frameRef = useRef(null);
+
+  const handlePointerEnter = (event) => {
+    boundsRef.current = event.currentTarget.getBoundingClientRect();
+  };
+
   const handlePointerMove = (event) => {
     if (prefersReducedMotion || event.pointerType !== 'mouse') return;
-    const bounds = event.currentTarget.getBoundingClientRect();
-    heroRef.current?.style.setProperty('--cursor-x', `${event.clientX - bounds.left}px`);
-    heroRef.current?.style.setProperty('--cursor-y', `${event.clientY - bounds.top}px`);
+    if (!boundsRef.current) {
+      boundsRef.current = event.currentTarget.getBoundingClientRect();
+    }
+    const bounds = boundsRef.current;
+    const x = event.clientX - bounds.left;
+    const y = event.clientY - bounds.top;
+
+    if (frameRef.current) return;
+    frameRef.current = requestAnimationFrame(() => {
+      frameRef.current = null;
+      if (heroRef.current) {
+        heroRef.current.style.setProperty('--cursor-x', `${x}px`);
+        heroRef.current.style.setProperty('--cursor-y', `${y}px`);
+      }
+    });
+  };
+
+  const handlePointerLeave = () => {
+    boundsRef.current = null;
+    if (frameRef.current) {
+      cancelAnimationFrame(frameRef.current);
+      frameRef.current = null;
+    }
   };
 
   const chipFallback = (
@@ -75,7 +102,9 @@ export default function Hero() {
       ref={heroRef}
       className="portfolio-hero"
       aria-labelledby="hero-title"
+      onPointerEnter={handlePointerEnter}
       onPointerMove={handlePointerMove}
+      onPointerLeave={handlePointerLeave}
     >
       <div className="hero-grid" aria-hidden="true" />
       <div className="hero-glow" aria-hidden="true" />

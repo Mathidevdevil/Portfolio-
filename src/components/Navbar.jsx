@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Menu, Moon, Sun, X } from 'lucide-react';
 import { portfolioContent } from '../data/portfolio.js';
 
@@ -11,7 +11,7 @@ export default function Navbar() {
     if (savedTheme === 'light' || savedTheme === 'dark') return savedTheme;
     return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
   });
-  const [scrollProgress, setScrollProgress] = useState(0);
+  const progressRef = useRef(null);
 
   useEffect(() => {
     document.documentElement.dataset.theme = theme;
@@ -33,7 +33,7 @@ export default function Navbar() {
 
         if (visibleSection) setActiveSection(visibleSection.target.id);
       },
-      { rootMargin: '-30% 0px -60% 0px', threshold: [0, 0.25, 0.5, 0.75] },
+      { rootMargin: '-30% 0px -60% 0px', threshold: [0, 0.5] },
     );
 
     sections.forEach((section) => observer.observe(section));
@@ -52,21 +52,24 @@ export default function Navbar() {
   useEffect(() => {
     let frame = 0;
     const updateProgress = () => {
-      cancelAnimationFrame(frame);
+      if (frame) return;
       frame = requestAnimationFrame(() => {
+        frame = 0;
         const scrollableHeight = document.documentElement.scrollHeight - window.innerHeight;
-        const progress = scrollableHeight > 0
-          ? Math.round((window.scrollY / scrollableHeight) * 100)
+        const ratio = scrollableHeight > 0
+          ? Math.min(1, Math.max(0, window.scrollY / scrollableHeight))
           : 0;
-        setScrollProgress(Math.min(100, Math.max(0, progress)));
+        if (progressRef.current) {
+          progressRef.current.style.transform = `scaleX(${ratio})`;
+        }
       });
     };
 
     updateProgress();
     window.addEventListener('scroll', updateProgress, { passive: true });
-    window.addEventListener('resize', updateProgress);
+    window.addEventListener('resize', updateProgress, { passive: true });
     return () => {
-      cancelAnimationFrame(frame);
+      if (frame) cancelAnimationFrame(frame);
       window.removeEventListener('scroll', updateProgress);
       window.removeEventListener('resize', updateProgress);
     };
@@ -88,16 +91,8 @@ export default function Navbar() {
   return (
     <>
       <div className="scroll-progress-track" aria-hidden="true">
-        <span style={{ transform: `scaleX(${scrollProgress / 100})` }} />
+        <span ref={progressRef} style={{ transform: 'scaleX(0)' }} />
       </div>
-      <div
-        className="scroll-progress-accessible"
-        role="progressbar"
-        aria-label="Page scroll progress"
-        aria-valuemin="0"
-        aria-valuemax="100"
-        aria-valuenow={scrollProgress}
-      />
       <header className="site-header">
         <nav className="site-nav" aria-label="Main navigation">
           <a className="site-brand" href="#home" onClick={closeMenu}>

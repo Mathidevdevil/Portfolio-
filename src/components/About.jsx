@@ -25,6 +25,7 @@ export default function About() {
             src={portrait}
             alt="Portrait of Mathiyarasu Arumugam"
             loading="lazy"
+            decoding="async"
           />
         </motion.div>
 

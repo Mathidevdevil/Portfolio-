@@ -5,8 +5,8 @@ import * as THREE from 'three';
 
 const ENABLE_MOUSE_TILT = true;
 const CHIP_SCALE = 1;
-const MOBILE_MAX_PIXEL_RATIO = 1.75;
-const DESKTOP_MAX_PIXEL_RATIO = 2;
+const MOBILE_MAX_PIXEL_RATIO = 1;
+const DESKTOP_MAX_PIXEL_RATIO = 1.25;
 const CORE_GLOW_SPEED = 1.25;
 const BASE_TILT = { x: 0.12, y: 0.34 };
 const PACKAGE_COLOR = '#252c38';
@@ -200,7 +200,7 @@ function ChipScene({
       animationTimeout.current = window.setTimeout(() => {
         animationTimeout.current = null;
         invalidate();
-      }, mobile ? 1000 / 30 : 1000 / 45);
+      }, mobile ? 1000 / 24 : 1000 / 30);
     }
   });
 
