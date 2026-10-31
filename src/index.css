@@ -58,6 +58,20 @@
   --learning-terminal-done: #176B35;
   --learning-terminal-link: #005BB5;
   --learning-terminal-prompt: #16803C;
+  --apple-glass-bg: linear-gradient(135deg, rgba(255, 255, 255, 0.90) 0%, rgba(255, 255, 255, 0.70) 100%);
+  --apple-glass-bg-subtle: linear-gradient(135deg, rgba(255, 255, 255, 0.82) 0%, rgba(255, 255, 255, 0.55) 100%);
+  --apple-glass-bg-hover: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(255, 255, 255, 0.85) 100%);
+  --apple-glass-border: rgba(215, 220, 232, 0.90);
+  --apple-glass-border-subtle: rgba(210, 215, 228, 0.65);
+  --apple-glass-highlight: inset 0 1px 1.5px 0 rgba(255, 255, 255, 1), inset 0 -1px 1px 0 rgba(0, 0, 0, 0.03);
+  --apple-glass-shadow: 0 16px 40px -8px rgba(15, 23, 42, 0.08), 0 4px 12px -2px rgba(15, 23, 42, 0.04);
+  --apple-glass-shadow-hover: 0 24px 56px -8px rgba(15, 23, 42, 0.14), 0 0 24px -2px rgba(0, 113, 227, 0.18);
+  --apple-glass-blur: blur(24px) saturate(190%);
+  --apple-glass-blur-sm: blur(14px) saturate(180%);
+  --apple-ambient-glow-1: rgba(0, 113, 227, 0.18);
+  --apple-ambient-glow-2: rgba(139, 92, 246, 0.15);
+  --apple-ambient-glow-3: rgba(14, 165, 233, 0.16);
+  --apple-ambient-glow-4: rgba(236, 72, 153, 0.12);
 }
 
 :root[data-theme="dark"] {
@@ -107,6 +121,20 @@
   --learning-terminal-done: #79D99A;
   --learning-terminal-link: #83C7FF;
   --learning-terminal-prompt: #65D9A4;
+  --apple-glass-bg: linear-gradient(135deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0.03) 50%, rgba(255, 255, 255, 0.01) 100%), rgba(22, 24, 34, 0.72);
+  --apple-glass-bg-subtle: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.02) 100%), rgba(26, 28, 40, 0.52);
+  --apple-glass-bg-hover: linear-gradient(135deg, rgba(255, 255, 255, 0.18) 0%, rgba(255, 255, 255, 0.05) 100%), rgba(30, 33, 48, 0.82);
+  --apple-glass-border: rgba(255, 255, 255, 0.20);
+  --apple-glass-border-subtle: rgba(255, 255, 255, 0.12);
+  --apple-glass-highlight: inset 0 1px 1.5px 0 rgba(255, 255, 255, 0.45), inset 0 0 24px 0 rgba(255, 255, 255, 0.02), inset 0 -1px 1px 0 rgba(0, 0, 0, 0.45);
+  --apple-glass-shadow: 0 20px 50px -10px rgba(0, 0, 0, 0.75), 0 4px 16px -2px rgba(0, 0, 0, 0.5);
+  --apple-glass-shadow-hover: 0 28px 68px -10px rgba(0, 0, 0, 0.9), 0 0 32px -4px rgba(0, 113, 227, 0.4);
+  --apple-glass-blur: blur(28px) saturate(200%);
+  --apple-glass-blur-sm: blur(16px) saturate(180%);
+  --apple-ambient-glow-1: rgba(0, 113, 227, 0.32);
+  --apple-ambient-glow-2: rgba(139, 92, 246, 0.28);
+  --apple-ambient-glow-3: rgba(6, 182, 212, 0.28);
+  --apple-ambient-glow-4: rgba(236, 72, 153, 0.20);
 }
 
 .portfolio-app.is-loading {
@@ -399,14 +427,14 @@
   align-items: center;
   justify-content: space-between;
   gap: 14px;
-  border: 1px solid var(--portfolio-nav-border);
+  border: 1px solid var(--apple-glass-border);
   border-radius: 999px;
-  background: var(--portfolio-nav-surface);
-  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.06);
+  background: var(--apple-glass-bg);
+  box-shadow: var(--apple-glass-shadow), var(--apple-glass-highlight);
   color: var(--portfolio-text);
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
-  transition: background-color 180ms ease, border-color 180ms ease, color 180ms ease;
+  backdrop-filter: var(--apple-glass-blur);
+  -webkit-backdrop-filter: var(--apple-glass-blur);
+  transition: background-color 220ms ease, border-color 220ms ease, box-shadow 220ms ease, color 180ms ease;
   pointer-events: auto;
 }
 
@@ -478,19 +506,24 @@
   height: 38px;
   display: inline-grid;
   place-items: center;
-  border: 1px solid transparent;
-  border-radius: var(--portfolio-radius-sm);
-  background: transparent;
+  border: 1px solid var(--apple-glass-border-subtle);
+  border-radius: 999px;
+  background: var(--apple-glass-bg-subtle);
+  backdrop-filter: var(--apple-glass-blur-sm);
+  -webkit-backdrop-filter: var(--apple-glass-blur-sm);
+  box-shadow: var(--apple-glass-highlight);
   color: var(--portfolio-muted);
   cursor: pointer;
-  transition: color 160ms ease, background-color 160ms ease, border-color 160ms ease;
+  transition: color 160ms ease, background-color 160ms ease, border-color 160ms ease, box-shadow 160ms ease, transform 160ms ease;
 }
 
 .theme-toggle:hover,
 .menu-toggle:hover {
-  border-color: var(--portfolio-border);
-  background: var(--portfolio-soft-hover);
+  border-color: var(--apple-glass-border);
+  background: var(--apple-glass-bg-hover);
   color: var(--portfolio-text);
+  box-shadow: var(--apple-glass-highlight), 0 4px 14px rgba(0, 0, 0, 0.08);
+  transform: scale(1.05);
 }
 
 .menu-toggle {
@@ -505,7 +538,10 @@
   display: grid;
   place-items: center;
   overflow: hidden;
-  background: var(--portfolio-bg);
+  background:
+    radial-gradient(circle 800px at 70% 30%, var(--apple-ambient-glow-1) 0%, transparent 70%),
+    radial-gradient(circle 650px at 20% 70%, var(--apple-ambient-glow-2) 0%, transparent 70%),
+    var(--portfolio-bg);
   color: var(--portfolio-text);
   font-family: var(--portfolio-font);
   transition: background-color 180ms ease, color 180ms ease;
@@ -653,15 +689,20 @@
 }
 
 .hero-button-secondary {
-  border-color: var(--portfolio-accent);
+  border: 1px solid var(--apple-glass-border);
   border-radius: 999px;
-  background: transparent;
+  background: var(--apple-glass-bg-subtle);
+  backdrop-filter: var(--apple-glass-blur-sm);
+  -webkit-backdrop-filter: var(--apple-glass-blur-sm);
+  box-shadow: var(--apple-glass-highlight), 0 4px 16px rgba(0, 0, 0, 0.04);
   color: var(--portfolio-accent);
 }
 
 .hero-button-secondary:hover {
-  border-color: var(--portfolio-accent);
-  background: var(--portfolio-focus-wash);
+  border-color: var(--apple-glass-border);
+  background: var(--apple-glass-bg-hover);
+  box-shadow: var(--apple-glass-highlight), 0 8px 24px rgba(0, 0, 0, 0.08);
+  color: var(--portfolio-accent-strong);
 }
 
 .hero-footnote {
@@ -895,24 +936,34 @@
 }
 
 .portfolio-section {
+  position: relative;
   padding: clamp(88px, 11vw, 140px) var(--portfolio-gutter);
   background: var(--portfolio-bg);
   color: var(--portfolio-text);
   font-family: var(--portfolio-font);
   transition: background-color 180ms ease, color 180ms ease;
+  overflow: hidden;
 }
 
 .about-section,
 .projects-section,
 .certifications-section {
-  background: var(--portfolio-bg-alt);
+  background:
+    radial-gradient(circle 850px at 15% 25%, var(--apple-ambient-glow-1) 0%, transparent 68%),
+    radial-gradient(circle 800px at 85% 75%, var(--apple-ambient-glow-2) 0%, transparent 68%),
+    radial-gradient(circle 600px at 50% 50%, var(--apple-ambient-glow-4) 0%, transparent 62%),
+    var(--portfolio-bg-alt);
 }
 
 .experience-section,
 .products-section,
 .skills-section,
 .contact-section {
-  background: var(--portfolio-bg);
+  background:
+    radial-gradient(circle 850px at 85% 20%, var(--apple-ambient-glow-3) 0%, transparent 68%),
+    radial-gradient(circle 800px at 15% 80%, var(--apple-ambient-glow-1) 0%, transparent 68%),
+    radial-gradient(circle 650px at 50% 45%, var(--apple-ambient-glow-2) 0%, transparent 62%),
+    var(--portfolio-bg);
 }
 
 .about-layout {
@@ -1005,11 +1056,13 @@
   min-width: 0;
   padding: 24px 25px;
   overflow: hidden;
-  border: 1px solid transparent;
+  border: 1px solid var(--apple-glass-border);
   border-radius: var(--portfolio-radius-md);
-  background:
-    var(--portfolio-card-on-alt);
-  transition: transform 180ms ease, border-color 180ms ease, background-color 180ms ease;
+  background: var(--apple-glass-bg);
+  backdrop-filter: var(--apple-glass-blur);
+  -webkit-backdrop-filter: var(--apple-glass-blur);
+  box-shadow: var(--apple-glass-shadow), var(--apple-glass-highlight);
+  transition: transform 220ms ease, border-color 220ms ease, box-shadow 220ms ease, background-color 220ms ease;
 }
 
 .about-education-image {
@@ -1034,8 +1087,10 @@
 }
 
 .about-education:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+  transform: translateY(-4px);
+  border-color: var(--apple-glass-border);
+  background: var(--apple-glass-bg-hover);
+  box-shadow: var(--apple-glass-shadow-hover), var(--apple-glass-highlight);
 }
 
 .about-education-degree {
@@ -1069,10 +1124,13 @@
   flex: 0 0 auto;
   display: grid;
   place-items: center;
-  border: 1px solid transparent;
+  border: 1px solid var(--apple-glass-border-subtle);
   border-radius: 10px;
-  background: var(--portfolio-bg-alt);
-  color: var(--portfolio-muted);
+  background: var(--apple-glass-bg-subtle);
+  backdrop-filter: var(--apple-glass-blur-sm);
+  -webkit-backdrop-filter: var(--apple-glass-blur-sm);
+  box-shadow: var(--apple-glass-highlight);
+  color: var(--portfolio-accent);
 }
 
 .about-education h3 {
@@ -1179,16 +1237,40 @@
 }
 
 .experience-card {
+  position: relative;
+  isolation: isolate;
   padding: clamp(22px, 3.4vw, 34px);
-  border: 1px solid transparent;
-  border-radius: var(--portfolio-radius-md);
-  background: var(--portfolio-card-on-base);
-  transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+  border: 1px solid var(--apple-glass-border);
+  border-radius: var(--portfolio-radius-lg);
+  background: var(--apple-glass-bg);
+  backdrop-filter: var(--apple-glass-blur);
+  -webkit-backdrop-filter: var(--apple-glass-blur);
+  box-shadow: var(--apple-glass-shadow), var(--apple-glass-highlight);
+  transition: transform 220ms ease, border-color 220ms ease, box-shadow 220ms ease, background 220ms ease;
+}
+
+.experience-card::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: -10px;
+  border-radius: calc(var(--portfolio-radius-lg) + 8px);
+  background: radial-gradient(circle at 80% 25%, var(--apple-ambient-glow-3) 0%, transparent 68%);
+  opacity: 0.6;
+  filter: blur(28px);
+  pointer-events: none;
+  transition: opacity 300ms ease;
+}
+
+.experience-card:hover::before {
+  opacity: 0.95;
 }
 
 .experience-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+  transform: translateY(-4px);
+  border-color: var(--apple-glass-border);
+  background: var(--apple-glass-bg-hover);
+  box-shadow: var(--apple-glass-shadow-hover), var(--apple-glass-highlight);
 }
 
 .experience-card h3 {
@@ -1209,14 +1291,17 @@
 .experience-company-badge {
   width: fit-content;
   margin-top: 13px;
-  padding: 6px 9px;
+  padding: 6px 12px;
   display: inline-flex;
   align-items: center;
-  border: 1px solid transparent;
-  border-radius: 7px;
-  background: var(--portfolio-bg);
-  color: var(--portfolio-muted);
-  font: 11px/1.4 var(--portfolio-mono);
+  border: 1px solid var(--apple-glass-border-subtle);
+  border-radius: 999px;
+  background: var(--apple-glass-bg-subtle);
+  backdrop-filter: var(--apple-glass-blur-sm);
+  -webkit-backdrop-filter: var(--apple-glass-blur-sm);
+  box-shadow: var(--apple-glass-highlight);
+  color: var(--portfolio-accent);
+  font: 500 11px/1.4 var(--portfolio-mono);
 }
 
 .experience-description {
@@ -1253,13 +1338,15 @@
 
 .learning-terminal {
   overflow: hidden;
-  border: 1px solid var(--learning-terminal-border);
-  border-radius: var(--portfolio-radius-md);
-  background: var(--learning-terminal-bg);
+  border: 1px solid var(--apple-glass-border);
+  border-radius: var(--portfolio-radius-lg);
+  background: var(--apple-glass-bg);
+  backdrop-filter: var(--apple-glass-blur);
+  -webkit-backdrop-filter: var(--apple-glass-blur);
   color: var(--learning-terminal-text);
   font-family: var(--portfolio-mono);
-  box-shadow: var(--portfolio-shadow);
-  transition: background-color 180ms ease, border-color 180ms ease, color 180ms ease;
+  box-shadow: var(--apple-glass-shadow), var(--apple-glass-highlight);
+  transition: background-color 220ms ease, border-color 220ms ease, box-shadow 220ms ease, color 180ms ease;
 }
 
 .learning-terminal-titlebar {
@@ -1269,8 +1356,10 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  border-bottom: 1px solid var(--learning-terminal-border);
-  background: var(--learning-terminal-titlebar-bg);
+  border-bottom: 1px solid var(--apple-glass-border-subtle);
+  background: var(--apple-glass-bg-subtle);
+  backdrop-filter: var(--apple-glass-blur-sm);
+  -webkit-backdrop-filter: var(--apple-glass-blur-sm);
 }
 
 .learning-terminal-dots {
@@ -1444,25 +1533,31 @@
 
 .project-filter {
   min-height: 36px;
-  padding: 0 13px;
-  border: 1px solid transparent;
-  border-radius: 9px;
-  background: transparent;
+  padding: 0 15px;
+  border: 1px solid var(--apple-glass-border-subtle);
+  border-radius: 999px;
+  background: var(--apple-glass-bg-subtle);
+  backdrop-filter: var(--apple-glass-blur-sm);
+  -webkit-backdrop-filter: var(--apple-glass-blur-sm);
+  box-shadow: var(--apple-glass-highlight);
   color: var(--portfolio-muted);
   font: 500 12px/1 var(--portfolio-font);
   cursor: pointer;
-  transition: color 160ms ease, border-color 160ms ease, background-color 160ms ease;
+  transition: color 160ms ease, border-color 160ms ease, background-color 160ms ease, box-shadow 160ms ease, transform 160ms ease;
 }
 
 .project-filter:hover {
+  background: var(--apple-glass-bg-hover);
+  border-color: var(--apple-glass-border);
   color: var(--portfolio-text);
+  transform: translateY(-1px);
 }
 
 .project-filter.is-active {
   border-color: transparent;
   background: var(--portfolio-accent-strong);
   color: #FFFFFF;
-  box-shadow: none;
+  box-shadow: 0 4px 16px rgba(0, 113, 227, 0.35);
 }
 
 .project-filter:focus-visible {
@@ -1499,10 +1594,30 @@
   grid-column: span 7;
   display: flex;
   flex-direction: column;
-  border: 1px solid transparent;
+  border: 1px solid var(--apple-glass-border);
   border-radius: var(--portfolio-radius-lg);
-  background: var(--portfolio-card-on-alt);
-  transition: transform 180ms ease, background 220ms ease, box-shadow 180ms ease;
+  background: var(--apple-glass-bg);
+  backdrop-filter: var(--apple-glass-blur);
+  -webkit-backdrop-filter: var(--apple-glass-blur);
+  box-shadow: var(--apple-glass-shadow), var(--apple-glass-highlight);
+  transition: transform 220ms ease, background 220ms ease, box-shadow 220ms ease, border-color 220ms ease;
+}
+
+.project-card::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: -10px;
+  border-radius: calc(var(--portfolio-radius-lg) + 8px);
+  background: radial-gradient(circle at 70% 30%, var(--apple-ambient-glow-1) 0%, transparent 68%);
+  opacity: 0.6;
+  filter: blur(28px);
+  pointer-events: none;
+  transition: opacity 300ms ease;
+}
+
+.project-card:hover::before {
+  opacity: 0.95;
 }
 
 .project-card:nth-child(even) {
@@ -1515,8 +1630,10 @@
 }
 
 .project-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+  transform: translateY(-4px);
+  background: var(--apple-glass-bg-hover);
+  border-color: var(--apple-glass-border);
+  box-shadow: var(--apple-glass-shadow-hover), var(--apple-glass-highlight);
 }
 
 .project-empty-slot {
@@ -1583,19 +1700,24 @@
   height: 36px;
   display: inline-grid;
   place-items: center;
-  border: 1px solid transparent;
+  border: 1px solid var(--apple-glass-border-subtle);
   border-radius: 10px;
-  background: var(--portfolio-bg-alt);
+  background: var(--apple-glass-bg-subtle);
+  backdrop-filter: var(--apple-glass-blur-sm);
+  -webkit-backdrop-filter: var(--apple-glass-blur-sm);
+  box-shadow: var(--apple-glass-highlight);
   color: var(--portfolio-muted);
   text-decoration: none;
-  transition: color 160ms ease, border-color 160ms ease, background-color 160ms ease;
+  transition: color 160ms ease, border-color 160ms ease, background-color 160ms ease, box-shadow 160ms ease, transform 160ms ease;
 }
 
 .project-icon-link:hover,
 .project-dialog-close:hover {
-  border-color: var(--portfolio-accent);
-  background: var(--portfolio-focus-wash);
+  border-color: var(--apple-glass-border);
+  background: var(--apple-glass-bg-hover);
   color: var(--portfolio-accent);
+  box-shadow: var(--apple-glass-highlight), 0 4px 14px rgba(0, 113, 227, 0.15);
+  transform: scale(1.05);
 }
 
 .project-card h4 {
@@ -1622,10 +1744,13 @@
 }
 
 .project-tag {
-  padding: 6px 9px;
-  border: 1px solid transparent;
-  border-radius: 7px;
-  background: var(--portfolio-chip-bg);
+  padding: 6px 11px;
+  border: 1px solid var(--apple-glass-border-subtle);
+  border-radius: 999px;
+  background: var(--apple-glass-bg-subtle);
+  backdrop-filter: var(--apple-glass-blur-sm);
+  -webkit-backdrop-filter: var(--apple-glass-blur-sm);
+  box-shadow: var(--apple-glass-highlight);
   color: var(--portfolio-text);
   font: 11px/1.3 var(--portfolio-mono);
 }
@@ -1671,9 +1796,9 @@
   display: grid;
   place-items: center;
   overflow-y: auto;
-  background: rgba(0, 0, 0, 0.56);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  background: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
 }
 
 .project-dialog {
@@ -1682,10 +1807,12 @@
   max-height: calc(100vh - 48px);
   padding: clamp(26px, 5vw, 44px);
   overflow-y: auto;
-  border: 1px solid var(--portfolio-border);
+  border: 1px solid var(--apple-glass-border);
   border-radius: var(--portfolio-radius-lg);
-  background: var(--portfolio-bg);
-  box-shadow: var(--portfolio-shadow);
+  background: var(--apple-glass-bg);
+  backdrop-filter: blur(32px) saturate(190%);
+  -webkit-backdrop-filter: blur(32px) saturate(190%);
+  box-shadow: var(--apple-glass-shadow-hover), var(--apple-glass-highlight);
   color: var(--portfolio-text);
   outline: none;
 }
@@ -1857,24 +1984,45 @@
   padding: clamp(22px, 2.8vw, 32px);
   display: flex;
   flex-direction: column;
-  border: 1px solid var(--portfolio-border);
+  border: 1px solid var(--apple-glass-border);
   border-radius: var(--portfolio-radius-lg);
-  background: var(--portfolio-card-on-base);
-  transition: transform 200ms ease, box-shadow 200ms ease, border-color 200ms ease;
+  background: var(--apple-glass-bg);
+  backdrop-filter: var(--apple-glass-blur);
+  -webkit-backdrop-filter: var(--apple-glass-blur);
+  box-shadow: var(--apple-glass-shadow), var(--apple-glass-highlight);
+  transition: transform 220ms ease, box-shadow 220ms ease, border-color 220ms ease, background-color 220ms ease;
 }
 
 .product-card-featured {
   padding: clamp(26px, 3.4vw, 38px);
 }
 
+.product-card-featured::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: -15px;
+  border-radius: calc(var(--portfolio-radius-lg) + 12px);
+  background: radial-gradient(circle at 60% 30%, var(--apple-ambient-glow-1) 0%, var(--apple-ambient-glow-3) 45%, transparent 70%);
+  opacity: 0.85;
+  filter: blur(36px);
+  pointer-events: none;
+  transition: opacity 300ms ease;
+}
+
+.product-card-featured:hover::before {
+  opacity: 1;
+}
+
 .product-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 12px 34px rgba(0, 0, 0, 0.08);
-  border-color: var(--portfolio-accent);
+  transform: translateY(-4px);
+  border-color: var(--apple-glass-border);
+  background: var(--apple-glass-bg-hover);
+  box-shadow: var(--apple-glass-shadow-hover), var(--apple-glass-highlight);
 }
 
 :root[data-theme="dark"] .product-card:hover {
-  box-shadow: 0 14px 38px rgba(0, 0, 0, 0.45);
+  box-shadow: var(--apple-glass-shadow-hover), var(--apple-glass-highlight);
 }
 
 .product-card-topline {
@@ -1901,9 +2049,13 @@
 }
 
 .product-subtitle-tag {
-  padding: 3px 8px;
-  border-radius: 6px;
-  background: var(--portfolio-focus-wash);
+  padding: 3px 10px;
+  border-radius: 999px;
+  background: var(--apple-glass-bg-subtle);
+  border: 1px solid var(--apple-glass-border-subtle);
+  backdrop-filter: var(--apple-glass-blur-sm);
+  -webkit-backdrop-filter: var(--apple-glass-blur-sm);
+  box-shadow: var(--apple-glass-highlight);
   color: var(--portfolio-accent);
   font: 500 11px/1.3 var(--portfolio-mono);
 }
@@ -1912,11 +2064,14 @@
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  padding: 4px 10px;
+  padding: 4px 11px;
   border-radius: 999px;
   font: 500 11px/1.2 var(--portfolio-mono);
-  background: var(--portfolio-surface);
-  border: 1px solid var(--portfolio-border);
+  background: var(--apple-glass-bg-subtle);
+  backdrop-filter: var(--apple-glass-blur-sm);
+  -webkit-backdrop-filter: var(--apple-glass-blur-sm);
+  border: 1px solid var(--apple-glass-border);
+  box-shadow: var(--apple-glass-highlight);
   color: var(--portfolio-text);
 }
 
@@ -1962,8 +2117,11 @@
   display: grid;
   place-items: center;
   border-radius: 14px;
-  background: var(--portfolio-focus-wash);
-  border: 1px solid var(--portfolio-accent);
+  background: var(--apple-glass-bg-subtle);
+  border: 1px solid var(--apple-glass-border);
+  backdrop-filter: var(--apple-glass-blur-sm);
+  -webkit-backdrop-filter: var(--apple-glass-blur-sm);
+  box-shadow: var(--apple-glass-highlight);
   color: var(--portfolio-accent);
 }
 
@@ -2006,12 +2164,22 @@
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 8px 14px;
-  border-radius: 10px;
-  background: var(--portfolio-surface);
-  border: 1px solid var(--portfolio-border);
+  padding: 8px 15px;
+  border-radius: 999px;
+  background: var(--apple-glass-bg-subtle);
+  backdrop-filter: var(--apple-glass-blur-sm);
+  -webkit-backdrop-filter: var(--apple-glass-blur-sm);
+  border: 1px solid var(--apple-glass-border-subtle);
+  box-shadow: var(--apple-glass-highlight);
   color: var(--portfolio-text);
   font: 550 12.5px/1.3 var(--portfolio-font);
+  transition: transform 160ms ease, background-color 160ms ease, border-color 160ms ease;
+}
+
+.product-highlight-pill:hover {
+  background: var(--apple-glass-bg-hover);
+  border-color: var(--apple-glass-border);
+  transform: translateY(-1px);
 }
 
 .product-highlight-pill svg {
@@ -2059,7 +2227,7 @@
 .product-card-footer {
   margin-top: auto;
   padding-top: 18px;
-  border-top: 1px solid var(--portfolio-border);
+  border-top: 1px solid var(--apple-glass-border-subtle);
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -2072,10 +2240,13 @@
 }
 
 .product-tech-tag {
-  padding: 4px 8px;
-  border: 1px solid transparent;
-  border-radius: 6px;
-  background: var(--portfolio-chip-bg);
+  padding: 5px 10px;
+  border: 1px solid var(--apple-glass-border-subtle);
+  border-radius: 999px;
+  background: var(--apple-glass-bg-subtle);
+  backdrop-filter: var(--apple-glass-blur-sm);
+  -webkit-backdrop-filter: var(--apple-glass-blur-sm);
+  box-shadow: var(--apple-glass-highlight);
   color: var(--portfolio-muted);
   font: 11px/1.3 var(--portfolio-mono);
 }
@@ -2089,7 +2260,7 @@
 
 .product-btn {
   min-height: 38px;
-  padding: 0 15px;
+  padding: 0 16px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -2098,7 +2269,7 @@
   font: 550 12.5px/1 var(--portfolio-font);
   text-decoration: none;
   cursor: pointer;
-  transition: transform 160ms ease, background-color 160ms ease, border-color 160ms ease, color 160ms ease;
+  transition: transform 160ms ease, background-color 160ms ease, border-color 160ms ease, color 160ms ease, box-shadow 160ms ease;
 }
 
 .product-btn:hover {
@@ -2108,23 +2279,30 @@
 .product-btn-primary {
   border: 1px solid var(--portfolio-accent-strong);
   background: var(--portfolio-accent-strong);
+  box-shadow: 0 4px 16px rgba(0, 113, 227, 0.3);
   color: #FFFFFF;
 }
 
 .product-btn-primary:hover {
   background: var(--portfolio-action-hover);
   border-color: var(--portfolio-action-hover);
+  box-shadow: 0 6px 20px rgba(0, 113, 227, 0.45);
 }
 
 .product-btn-secondary {
-  border: 1px solid var(--portfolio-border);
-  background: var(--portfolio-surface);
+  border: 1px solid var(--apple-glass-border);
+  background: var(--apple-glass-bg-subtle);
+  backdrop-filter: var(--apple-glass-blur-sm);
+  -webkit-backdrop-filter: var(--apple-glass-blur-sm);
+  box-shadow: var(--apple-glass-highlight);
   color: var(--portfolio-text);
 }
 
 .product-btn-secondary:hover {
   border-color: var(--portfolio-accent);
+  background: var(--apple-glass-bg-hover);
   color: var(--portfolio-accent);
+  box-shadow: var(--apple-glass-highlight), 0 4px 14px rgba(0, 113, 227, 0.12);
 }
 
 .product-btn:focus-visible {
@@ -2171,15 +2349,21 @@
   min-width: 0;
   min-height: 178px;
   padding: clamp(18px, 2.4vw, 26px);
-  border: 1px solid transparent;
+  border: 1px solid var(--apple-glass-border);
   border-radius: var(--portfolio-radius-lg);
-  background: var(--portfolio-card-on-base);
-  transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+  background: var(--apple-glass-bg);
+  backdrop-filter: var(--apple-glass-blur);
+  -webkit-backdrop-filter: var(--apple-glass-blur);
+  box-shadow: var(--apple-glass-shadow), var(--apple-glass-highlight);
+  transition: transform 220ms ease, border-color 220ms ease, box-shadow 220ms ease, background-color 220ms ease;
 }
 
 .skill-card:hover {
   z-index: 2;
-  box-shadow: 0 14px 36px rgba(0, 0, 0, 0.16);
+  border-color: var(--apple-glass-border);
+  background: var(--apple-glass-bg-hover);
+  box-shadow: var(--apple-glass-shadow-hover), var(--apple-glass-highlight);
+  transform: translateY(-4px);
 }
 
 .skill-card-code {
@@ -2360,15 +2544,18 @@
 }
 
 .skill-card-icon {
-  width: 34px;
-  height: 34px;
+  width: 36px;
+  height: 36px;
   flex: 0 0 auto;
   display: grid;
   place-items: center;
-  border: 1px solid transparent;
+  border: 1px solid var(--apple-glass-border-subtle);
   border-radius: 10px;
-  background: var(--portfolio-bg);
-  color: var(--portfolio-muted);
+  background: var(--apple-glass-bg-subtle);
+  backdrop-filter: var(--apple-glass-blur-sm);
+  -webkit-backdrop-filter: var(--apple-glass-blur-sm);
+  box-shadow: var(--apple-glass-highlight);
+  color: var(--portfolio-accent);
 }
 
 .skill-card-heading h4 {
@@ -2387,15 +2574,22 @@
   flex-direction: column;
   justify-content: flex-end;
   overflow: hidden;
-  border: 1px solid transparent;
-  border-radius: var(--portfolio-radius-md);
-  background: var(--portfolio-card-on-base);
+  border: 1px solid var(--apple-glass-border);
+  border-radius: var(--portfolio-radius-lg);
+  background: var(--apple-glass-bg);
+  backdrop-filter: var(--apple-glass-blur);
+  -webkit-backdrop-filter: var(--apple-glass-blur);
+  box-shadow: var(--apple-glass-shadow), var(--apple-glass-highlight);
   isolation: isolate;
+  transition: transform 220ms ease, border-color 220ms ease, box-shadow 220ms ease, background-color 220ms ease;
 }
 
 .skill-silicon-panel:hover {
   z-index: 2;
-  box-shadow: 0 14px 36px rgba(0, 0, 0, 0.16);
+  border-color: var(--apple-glass-border);
+  background: var(--apple-glass-bg-hover);
+  box-shadow: var(--apple-glass-shadow-hover), var(--apple-glass-highlight);
+  transform: translateY(-4px);
 }
 
 .skill-silicon-panel::before,
@@ -2449,17 +2643,20 @@
 
 .skill-tag {
   min-height: 32px;
-  padding: 6px 8px;
+  padding: 6px 12px;
   display: inline-flex;
   align-items: center;
   gap: 7px;
-  border: 1px solid transparent;
-  border-radius: 8px;
-  background: var(--portfolio-chip-bg);
+  border: 1px solid var(--apple-glass-border-subtle);
+  border-radius: 999px;
+  background: var(--apple-glass-bg-subtle);
+  backdrop-filter: var(--apple-glass-blur-sm);
+  -webkit-backdrop-filter: var(--apple-glass-blur-sm);
+  box-shadow: var(--apple-glass-highlight);
   color: var(--portfolio-text);
   font: 11px/1.2 var(--portfolio-mono);
   line-height: 1.2;
-  transition: color 160ms ease, border-color 160ms ease, background-color 160ms ease, box-shadow 160ms ease;
+  transition: color 160ms ease, border-color 160ms ease, background-color 160ms ease, box-shadow 160ms ease, transform 160ms ease;
 }
 
 .skill-tag svg {
@@ -2470,10 +2667,11 @@
 }
 
 .skill-tag:hover {
-  border-color: transparent;
-  background: var(--portfolio-focus-wash);
+  border-color: var(--apple-glass-border);
+  background: var(--apple-glass-bg-hover);
   color: var(--portfolio-accent);
-  box-shadow: none;
+  box-shadow: var(--apple-glass-highlight), 0 4px 14px rgba(0, 113, 227, 0.15);
+  transform: translateY(-1px);
 }
 
 .skill-tag:hover svg {
@@ -2503,20 +2701,28 @@
   min-width: 0;
   min-height: 158px;
   overflow: hidden;
-  border: 1px solid transparent;
+  border: 1px solid var(--apple-glass-border);
   border-radius: var(--portfolio-radius-lg);
-  background: var(--portfolio-card-on-alt);
+  background: var(--apple-glass-bg);
+  backdrop-filter: var(--apple-glass-blur);
+  -webkit-backdrop-filter: var(--apple-glass-blur);
+  box-shadow: var(--apple-glass-shadow), var(--apple-glass-highlight);
   transform-style: preserve-3d;
-  transition: transform 220ms cubic-bezier(0.2, 0.75, 0.25, 1), border-color 180ms ease, box-shadow 180ms ease;
+  transition: transform 220ms cubic-bezier(0.2, 0.75, 0.25, 1), border-color 180ms ease, box-shadow 180ms ease, background-color 180ms ease;
 }
 
 .certificate-card:hover {
   transform: perspective(900px) translateY(-4px) rotateX(1.5deg) rotateY(-1deg);
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+  border-color: var(--apple-glass-border);
+  background: var(--apple-glass-bg-hover);
+  box-shadow: var(--apple-glass-shadow-hover), var(--apple-glass-highlight);
 }
 
 .certificate-card:nth-child(even):hover {
   transform: perspective(900px) translateY(-4px) rotateX(1.5deg) rotateY(1deg);
+  border-color: var(--apple-glass-border);
+  background: var(--apple-glass-bg-hover);
+  box-shadow: var(--apple-glass-shadow-hover), var(--apple-glass-highlight);
 }
 
 .certificate-card-link,
@@ -2656,30 +2862,35 @@
 .contact-details-panel {
   align-self: center;
   padding: clamp(20px, 3.5vw, 36px);
-  border: 1px solid transparent;
+  border: 1px solid var(--apple-glass-border);
   border-radius: var(--portfolio-radius-lg);
-  background: var(--portfolio-card-on-base);
-  box-shadow: none;
+  background: var(--apple-glass-bg);
+  backdrop-filter: var(--apple-glass-blur);
+  -webkit-backdrop-filter: var(--apple-glass-blur);
+  box-shadow: var(--apple-glass-shadow), var(--apple-glass-highlight);
 }
 
 .contact-link-list {
   display: grid;
-  gap: 9px;
+  gap: 10px;
 }
 
 .contact-social-link {
   min-height: 52px;
-  padding: 10px 14px;
+  padding: 11px 16px;
   display: flex;
   align-items: center;
-  gap: 12px;
-  border: 1px solid transparent;
-  border-radius: 11px;
-  background: var(--portfolio-card-on-base);
+  gap: 13px;
+  border: 1px solid var(--apple-glass-border-subtle);
+  border-radius: 12px;
+  background: var(--apple-glass-bg-subtle);
+  backdrop-filter: var(--apple-glass-blur-sm);
+  -webkit-backdrop-filter: var(--apple-glass-blur-sm);
+  box-shadow: var(--apple-glass-highlight);
   color: var(--portfolio-muted);
   font-size: 13px;
   text-decoration: none;
-  transition: color 160ms ease, border-color 160ms ease, background-color 160ms ease, transform 160ms ease;
+  transition: color 160ms ease, border-color 160ms ease, background-color 160ms ease, transform 160ms ease, box-shadow 160ms ease;
 }
 
 .contact-detail-copy {
@@ -2700,10 +2911,11 @@
 }
 
 a.contact-social-link:hover {
-  transform: translateX(2px);
-  border-color: transparent;
-  background: var(--portfolio-focus-wash);
+  transform: translateX(4px);
+  border-color: var(--apple-glass-border);
+  background: var(--apple-glass-bg-hover);
   color: var(--portfolio-accent);
+  box-shadow: var(--apple-glass-highlight), 0 6px 20px rgba(0, 113, 227, 0.12);
 }
 
 .contact-social-arrow {
@@ -3035,12 +3247,12 @@ a.contact-social-link:hover {
     align-items: stretch;
     flex-direction: column;
     gap: 2px;
-    border: 1px solid var(--portfolio-border);
-    border-radius: 18px;
-    background: var(--portfolio-surface);
-    box-shadow: var(--portfolio-shadow);
-    backdrop-filter: blur(18px);
-    -webkit-backdrop-filter: blur(18px);
+    border: 1px solid var(--apple-glass-border);
+    border-radius: 20px;
+    background: var(--apple-glass-bg);
+    box-shadow: var(--apple-glass-shadow-hover), var(--apple-glass-highlight);
+    backdrop-filter: var(--apple-glass-blur);
+    -webkit-backdrop-filter: var(--apple-glass-blur);
     pointer-events: auto;
   }
 
