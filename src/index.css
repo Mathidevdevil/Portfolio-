@@ -148,22 +148,15 @@
   display: grid;
   place-items: center;
   overflow: hidden;
-  background: #ffffff;
-  color: #000000;
+  background: #fbfbfd;
+  color: #1d1d1f;
   transition: transform 800ms cubic-bezier(0.76, 0, 0.24, 1);
+  will-change: transform;
 }
 
 :root[data-theme="dark"] .loading-intro {
   background: #000000;
   color: #ffffff;
-}
-
-:root[data-theme="dark"] .loading-intro-logo {
-  color: #ffffff;
-}
-
-:root[data-theme="dark"] .loading-intro-welcome {
-  color: #a1a1a6;
 }
 
 .loading-intro.is-exiting {
@@ -172,96 +165,91 @@
 
 .loading-intro-stage {
   position: relative;
-  width: min(100% - 32px, 680px);
-  min-height: 180px;
-  display: grid;
-  place-items: center;
-}
-
-.loading-intro-scribble {
-  position: absolute;
-  width: 160px;
-  height: 160px;
-  overflow: visible;
-  animation: loading-intro-scribble-out 200ms ease 800ms forwards;
-}
-
-.loading-intro-scribble path {
-  fill: none;
-  stroke: #00c3ff;
-  stroke-width: 5;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  stroke-dasharray: 1;
-  stroke-dashoffset: 1;
-  filter: drop-shadow(0 0 3px rgba(0, 195, 255, 0.8));
-  animation:
-    loading-intro-scribble-draw 850ms cubic-bezier(0.65, 0, 0.35, 1) 100ms forwards,
-    loading-intro-neon-pulse 600ms ease-in-out 950ms infinite alternate;
-}
-
-.loading-intro-logo {
-  margin: 0;
+  width: min(100% - 32px, 720px);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  color: #000000;
-  font: 600 clamp(44px, 9vw, 68px)/1 "Cormorant Garamond", Georgia, serif;
-  letter-spacing: 0.08em;
-  white-space: nowrap;
+  text-align: center;
 }
 
-.loading-intro-logo-line {
+.apple-hello-svg {
+  width: min(84vw, 480px);
+  max-width: 100%;
+  height: auto;
+  overflow: visible;
   display: block;
-  overflow: hidden;
-  padding-bottom: 0.08em;
 }
 
-.loading-intro-logo-line i {
-  display: block;
-  font-style: normal;
-  transform: translateY(110%);
-  animation: loading-intro-logo-rise 450ms cubic-bezier(0.16, 1, 0.3, 1) 500ms forwards;
+.apple-hello-path {
+  fill: none;
+  stroke: #1d1d1f;
+  stroke-width: 22px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: apple-hello-draw 1.35s cubic-bezier(0.65, 0, 0.35, 1) 0.12s forwards;
 }
 
-.loading-intro-welcome {
-  margin-top: 14px;
-  color: #555555;
-  font: 500 12px/1.4 var(--portfolio-mono);
-  letter-spacing: 0.16em;
+:root[data-theme="dark"] .apple-hello-path {
+  stroke: #ffffff;
+  filter:
+    drop-shadow(0 0 10px rgba(255, 255, 255, 0.5))
+    drop-shadow(0 0 28px rgba(255, 255, 255, 0.22));
+}
+
+.apple-hello-caption {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 24px;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", var(--portfolio-sans);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
+  color: #6e6e73;
   opacity: 0;
-  animation: loading-intro-welcome-appear 350ms ease 800ms forwards;
+  animation: apple-hello-caption-fade 450ms cubic-bezier(0.16, 1, 0.3, 1) 1.05s forwards;
 }
 
-@keyframes loading-intro-scribble-draw {
-  to { stroke-dashoffset: 0; }
+:root[data-theme="dark"] .apple-hello-caption {
+  color: #a1a1a6;
 }
 
-@keyframes loading-intro-scribble-out {
-  to { opacity: 0; transform: scale(0.6); }
+.apple-hello-name {
+  color: #1d1d1f;
+  font-weight: 600;
 }
 
-@keyframes loading-intro-logo-rise {
-  to { transform: translateY(0); }
+:root[data-theme="dark"] .apple-hello-name {
+  color: #ffffff;
 }
 
-@keyframes loading-intro-welcome-appear {
-  to { opacity: 1; }
+.apple-hello-dot {
+  opacity: 0.45;
+  font-size: 9px;
 }
 
-@keyframes loading-intro-neon-pulse {
-  0% {
-    filter:
-      drop-shadow(0 0 3px rgba(0, 195, 255, 0.8))
-      drop-shadow(0 0 8px rgba(0, 195, 255, 0.45));
+@keyframes apple-hello-draw {
+  from {
+    stroke-dashoffset: 1;
   }
-  100% {
-    filter:
-      drop-shadow(0 0 5px rgba(0, 195, 255, 1))
-      drop-shadow(0 0 16px rgba(0, 195, 255, 0.75))
-      drop-shadow(0 0 30px rgba(0, 195, 255, 0.42));
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes apple-hello-caption-fade {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
