@@ -31,27 +31,44 @@ function App() {
     const previousOverflow = document.body.style.overflow;
     document.body.style.overflow = 'hidden';
 
-    const exitTimer = window.setTimeout(() => {
+    let finishTimer;
+    const startExit = () => {
       setIsExiting(true);
-    }, 1800);
+      finishTimer = window.setTimeout(() => {
+        document.body.style.overflow = previousOverflow;
+        setIsLoading(false);
+      }, 1100);
+    };
 
-    const finishTimer = window.setTimeout(() => {
-      document.body.style.overflow = previousOverflow;
-      setIsLoading(false);
-    }, 2600);
+    const exitTimer = window.setTimeout(() => {
+      startExit();
+    }, 3800);
 
     return () => {
       document.body.style.overflow = previousOverflow;
       window.clearTimeout(exitTimer);
-      window.clearTimeout(finishTimer);
+      if (finishTimer) {
+        window.clearTimeout(finishTimer);
+      }
     };
   }, []);
+
+  const handleDismissIntro = () => {
+    if (!isExiting) {
+      setIsExiting(true);
+      window.setTimeout(() => {
+        document.body.style.overflow = '';
+        setIsLoading(false);
+      }, 1100);
+    }
+  };
 
   return (
     <>
       {isLoading && (
         <LoadingIntro
           isExiting={isExiting}
+          onDismiss={handleDismissIntro}
         />
       )}
       <div

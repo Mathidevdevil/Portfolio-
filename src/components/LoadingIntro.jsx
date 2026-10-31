@@ -1,11 +1,12 @@
 import React from 'react';
 
-export default function LoadingIntro({ isExiting }) {
+export default function LoadingIntro({ isExiting, onDismiss }) {
   return (
     <div
       className={`loading-intro${isExiting ? ' is-exiting' : ''}`}
       role="status"
       aria-label="Loading portfolio"
+      onClick={onDismiss}
     >
       <div className="loading-intro-stage">
         <svg
