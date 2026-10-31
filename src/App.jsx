@@ -37,12 +37,12 @@ function App() {
       finishTimer = window.setTimeout(() => {
         document.body.style.overflow = previousOverflow;
         setIsLoading(false);
-      }, 1100);
+      }, 1000);
     };
 
     const exitTimer = window.setTimeout(() => {
       startExit();
-    }, 3800);
+    }, 3400);
 
     return () => {
       document.body.style.overflow = previousOverflow;
@@ -59,7 +59,7 @@ function App() {
       window.setTimeout(() => {
         document.body.style.overflow = '';
         setIsLoading(false);
-      }, 1100);
+      }, 1000);
     }
   };
 

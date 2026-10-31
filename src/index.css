@@ -137,8 +137,13 @@
   --apple-ambient-glow-4: rgba(236, 72, 153, 0.16);
 }
 
+.portfolio-app {
+  transition: opacity 700ms ease, transform 700ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
 .portfolio-app.is-loading {
-  visibility: hidden;
+  opacity: 0.95;
+  transform: scale(0.99);
 }
 
 .loading-intro {
@@ -150,7 +155,7 @@
   overflow: hidden;
   background: #fbfbfd;
   color: #1d1d1f;
-  transition: transform 1100ms cubic-bezier(0.76, 0, 0.24, 1);
+  transition: transform 1000ms cubic-bezier(0.76, 0, 0.24, 1);
   will-change: transform;
   cursor: pointer;
 }
@@ -162,6 +167,7 @@
 
 .loading-intro.is-exiting {
   transform: translateY(-100%);
+  pointer-events: none;
 }
 
 .loading-intro-stage {
@@ -175,7 +181,27 @@
   user-select: none;
 }
 
+.loading-intro-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: min(90vw, 560px);
+  height: 220px;
+  transform: translate(-50%, -60%);
+  border-radius: 50%;
+  background: radial-gradient(ellipse at center, rgba(0, 113, 227, 0.12) 0%, rgba(255, 255, 255, 0.05) 35%, transparent 70%);
+  pointer-events: none;
+  opacity: 0;
+  animation: apple-hello-glow-fade 900ms ease 1.9s forwards;
+}
+
+:root[data-theme="dark"] .loading-intro-glow {
+  background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.10) 0%, rgba(0, 113, 227, 0.08) 40%, transparent 70%);
+}
+
 .apple-hello-svg {
+  position: relative;
+  z-index: 1;
   width: min(84vw, 480px);
   max-width: 100%;
   height: auto;
@@ -189,19 +215,19 @@
   stroke-width: 22px;
   stroke-linecap: round;
   stroke-linejoin: round;
-  stroke-dasharray: 1;
-  stroke-dashoffset: 1;
-  animation: apple-hello-draw 2.8s cubic-bezier(0.42, 0, 0.25, 1) 0.25s forwards;
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  will-change: stroke-dashoffset;
+  animation: apple-hello-draw 2.5s cubic-bezier(0.42, 0, 0.25, 1) 0.15s forwards;
 }
 
 :root[data-theme="dark"] .apple-hello-path {
   stroke: #ffffff;
-  filter:
-    drop-shadow(0 0 12px rgba(255, 255, 255, 0.55))
-    drop-shadow(0 0 32px rgba(255, 255, 255, 0.25));
 }
 
 .apple-hello-caption {
+  position: relative;
+  z-index: 1;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -214,7 +240,7 @@
   text-transform: uppercase;
   color: #6e6e73;
   opacity: 0;
-  animation: apple-hello-caption-fade 800ms cubic-bezier(0.16, 1, 0.3, 1) 2.2s forwards;
+  animation: apple-hello-caption-fade 700ms cubic-bezier(0.16, 1, 0.3, 1) 2.0s forwards;
 }
 
 :root[data-theme="dark"] .apple-hello-caption {
@@ -237,10 +263,16 @@
 
 @keyframes apple-hello-draw {
   from {
-    stroke-dashoffset: 1;
+    stroke-dashoffset: 1000;
   }
   to {
     stroke-dashoffset: 0;
+  }
+}
+
+@keyframes apple-hello-glow-fade {
+  to {
+    opacity: 1;
   }
 }
 

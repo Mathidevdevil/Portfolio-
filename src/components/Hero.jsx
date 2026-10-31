@@ -14,18 +14,20 @@ export default function Hero() {
   const [projectsAction, resumeAction, contactAction] = portfolioContent.heroActions;
 
   useEffect(() => {
-    let timeoutId;
     let idleId;
-
-    if ('requestIdleCallback' in window) {
-      idleId = window.requestIdleCallback(() => setLoadChip3D(true), { timeout: 1200 });
-    } else {
-      timeoutId = window.setTimeout(() => setLoadChip3D(true), 300);
-    }
+    const timeoutId = window.setTimeout(() => {
+      if ('requestIdleCallback' in window) {
+        idleId = window.requestIdleCallback(() => setLoadChip3D(true), { timeout: 2000 });
+      } else {
+        setLoadChip3D(true);
+      }
+    }, 3600);
 
     return () => {
-      if (idleId !== undefined) window.cancelIdleCallback(idleId);
       window.clearTimeout(timeoutId);
+      if (idleId !== undefined && 'cancelIdleCallback' in window) {
+        window.cancelIdleCallback(idleId);
+      }
     };
   }, []);
 
